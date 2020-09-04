@@ -1,3 +1,4 @@
+
 # Webpack Starter Kit
 
 ## Clone This Repo
@@ -14,7 +15,7 @@ Now try to commit something and push it up to your new repo. If everything is se
 
 ## Setup
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo. 
+After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo.
 
 Then install the library dependencies. Run:
 
@@ -90,7 +91,7 @@ The test results will output to the terminal.
 
 Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
 
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory. 
+Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory.
 
 ## Webpack?
 
@@ -103,3 +104,5 @@ _If you are finished with the functionality and testing of your project_, then y
 [GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
 
 If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+=======
+# whats-cookin
