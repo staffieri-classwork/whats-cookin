@@ -1,15 +1,15 @@
 import { expect } from 'chai';
 
 import User from '../src/user';
-import data from '../src/data/users-data';
+import users from '../src/data/users-data';
 
-describe('User', function() {
+describe('User', () =>{
   let user;
   let userInfo;
   let recipe;
 
-  beforeEach(function() {
-    userInfo = data.users[0];
+  beforeEach(() =>{
+    userInfo = users[0];
     user = new User(userInfo)
 
     recipe = {name: 'Chicken Parm', type: ['italian', 'dinner']};

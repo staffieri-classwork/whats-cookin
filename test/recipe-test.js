@@ -1,16 +1,16 @@
 import { expect } from 'chai';
 
 import Recipe from '../src/recipe';
-import data from '../src/data/recipe-data';
+import users from '../src/data/recipe-data';
 
-describe('Recipe', function() {
+describe('Recipe', () => {
   let recipe;
   let recipeInfo;
 
-  beforeEach(function() {
-    recipeInfo = data.recipeData[0];
+  beforeEach(() => {
+    recipeInfo = users[0];
     recipe = new Recipe(recipeInfo);
-  })
+  });
 
   it('is a function', function() {
     expect(Recipe).to.be.a('function');
