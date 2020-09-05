@@ -44,6 +44,12 @@ describe('User', () =>{
     expect(user.favoriteRecipes[0].name).to.equal('Chicken Parm');
   });
 
+  it('should not be allowed to have duplicates in favoriteRecipes', () => {
+    user.saveRecipe(recipe);
+    user.saveRecipe(recipe);
+    expect(user.favoriteRecipes.length).to.deep.equal(1);
+  });
+
   it('should be able to remove a recipe from favoriteRecipes', () => {
     user.saveRecipe(recipe);
     expect(user.favoriteRecipes[0].name).to.equal('Chicken Parm');
