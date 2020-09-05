@@ -44,6 +44,13 @@ describe('User', () =>{
     expect(user.favoriteRecipes[0].name).to.equal('Chicken Parm');
   });
 
+  it('should be able to remove a recipe from favoriteRecipes', () => {
+    user.saveRecipe(recipe);
+    expect(user.favoriteRecipes[0].name).to.equal('Chicken Parm');
+    user.removeRecipe(recipe);
+    expect(user.favoriteRecipes).to.deep.equal([]);
+  });
+
   it('should be able to decide to cook a recipe', () => {
     user.decideToCook(recipe);
     expect(user.recipesToCook[0].name).to.equal('Chicken Parm');
