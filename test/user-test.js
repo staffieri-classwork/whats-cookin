@@ -20,7 +20,7 @@ describe('User', () =>{
   });
 
   it('should initialize with an id', () => {
-    expect(user.id).to.eq(2);
+    expect(user.id).to.eq(1);
   });
 
   it('should initialize with a name', () => {
