@@ -2,6 +2,7 @@ import { expect } from 'chai';
 
 import Recipe from '../src/recipe';
 import recipeData from '../src/data/sample-recipe-data';
+import ingredientData from '../src/data/sample-ingredient-data';
 
 describe('Recipe', () => {
   let recipe;
@@ -45,6 +46,6 @@ describe('Recipe', () => {
   });
 
   it('should calculate the total cost of all of the ingredients', () => {
-    expect(recipe.calculateIngredientsCost()).to.eq();
+    expect(recipe.calculateIngredientsCost(ingredientData)).to.eq('$177.76');
   });
 });
