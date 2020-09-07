@@ -105,3 +105,5 @@ let sampleIngredientData = [
     "estimatedCostInCents": 576
   },
 ]
+
+export default sampleIngredientData;
