@@ -220,12 +220,10 @@ function generateIngredients(recipe) {
 }
 
 function generateInstructions(recipe) {
-  let instructionsList = "";
-  let instructions = recipe.instructions.map(i => {
-    return i.instruction
-  });
-  instructions.forEach(i => {
-    instructionsList += `<li>${i}</li>`
+  let instructionsList = ''
+  let instructions = recipe.getInstructions()
+  instructions.forEach(instruction => {
+    instructionsList += `<li>${instruction}</li>`
   });
   fullRecipeInfo.insertAdjacentHTML("beforeend", "<h4>Instructions</h4>");
   fullRecipeInfo.insertAdjacentHTML("beforeend", `<ol>${instructionsList}</ol>`);
