@@ -13,8 +13,8 @@ describe('User', () =>{
     userInfo = users[0];
     user = new User(userInfo)
 
-    recipe = {name: 'Chicken Parm', type: ['italian', 'dinner']};
-    recipe2 = {name: 'Scrambled Eggs', type: ['breakfast']};
+    recipe = {name: 'Chicken Parm', type: ['italian', 'dinner'], ingredients: ['chicken', 'parm', 'bread crumbs', 'eggs']};
+    recipe2 = {name: 'Scrambled Eggs', type: ['breakfast'], ingredients: ['eggs', 'milk', 'pepper']};
   });
 
   it('should be a function', () => {
@@ -79,5 +79,11 @@ describe('User', () =>{
     user.saveRecipe(recipe);
     expect(user.searchForRecipe('Chicken Parm')).to.deep.equal([recipe]);
   });
+
+  it('should be able to search for recipes by ingredient', () => {
+    user.saveRecipe(recipe);
+    user.saveRecipe(recipe2);
+    expect(user.searchForRecipe('eggs')).to.deep.equal([recipe, recipe2]);
+  })
 
 });
