@@ -7,12 +7,14 @@ describe('User', () =>{
   let user;
   let userInfo;
   let recipe;
+  let recipe2;
 
   beforeEach(() =>{
     userInfo = users[0];
     user = new User(userInfo)
 
     recipe = {name: 'Chicken Parm', type: ['italian', 'dinner']};
+    recipe2 = {name: 'Scrambled Eggs', type: ['breakfast']};
   });
 
   it('should be a function', () => {
@@ -64,6 +66,7 @@ describe('User', () =>{
 
   it('should be able to filter recipes by type', () => {
     user.saveRecipe(recipe);
+    user.saveRecipe(recipe2);
     expect(user.filterRecipes('italian')).to.deep.equal([recipe]);
   });
 
@@ -71,4 +74,6 @@ describe('User', () =>{
     user.saveRecipe(recipe);
     expect(user.searchForRecipe('Chicken Parm')).to.deep.equal([recipe]);
   });
+
+
 });
