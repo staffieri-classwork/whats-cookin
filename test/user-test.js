@@ -70,10 +70,14 @@ describe('User', () =>{
     expect(user.filterRecipes('italian')).to.deep.equal([recipe]);
   });
 
+  it('should return nothing if the searched item is not in type', () => {
+    user.saveRecipe(recipe2);
+    expect(user.filterRecipes('italian')).to.deep.equal([]);
+  })
+
   it('should be able to search recipes by name', () => {
     user.saveRecipe(recipe);
     expect(user.searchForRecipe('Chicken Parm')).to.deep.equal([recipe]);
   });
-
 
 });
