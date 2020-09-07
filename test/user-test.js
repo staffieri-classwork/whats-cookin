@@ -77,6 +77,7 @@ describe('User', () =>{
 
   it('should be able to search recipes by name', () => {
     user.saveRecipe(recipe);
+    user.saveRecipe(recipe2);
     expect(user.searchForRecipe('Chicken Parm')).to.deep.equal([recipe]);
   });
 
@@ -84,6 +85,12 @@ describe('User', () =>{
     user.saveRecipe(recipe);
     user.saveRecipe(recipe2);
     expect(user.searchForRecipe('eggs')).to.deep.equal([recipe, recipe2]);
+  })
+
+  it('should be able to search for recipes by ingredient', () => {
+    user.saveRecipe(recipe);
+    user.saveRecipe(recipe2);
+    expect(user.searchForRecipe('chicken')).to.deep.equal([recipe]);
   })
 
 });
