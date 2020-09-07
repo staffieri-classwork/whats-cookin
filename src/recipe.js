@@ -1,10 +1,11 @@
 class Recipe {
   constructor(recipe) {
-    this.id = recipe.id;
     this.name = recipe.name;
+    this.id = recipe.id;
     this.image = recipe.image;
-    this.tags = recipe.tags;
     this.ingredients = recipe.ingredients;
+    this.instructions = recipe.instructions;
+    this.tags = recipe.tags;
   }
 
   calculateIngredientsCost(ingredientData) {
@@ -17,6 +18,13 @@ class Recipe {
       return finalCost
     }, 0)
     return  `$${totalCost / 100}`
+  }
+
+  getInstructions() {
+    let instructions = this.instructions.map(i => {
+      return i.instruction
+    });
+    return instructions
   }
 
 };
