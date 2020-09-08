@@ -50,7 +50,7 @@ describe('Recipe', () => {
   });
 
   it('should get the list of instructions for a specified recipe', () => {
-    expect(recipe.getInstructions()[1]).to.deep.eq('Add egg and vanilla and mix until combined.')
+    expect(recipe.getInstructions()[1].instruction).to.deep.eq('Add egg and vanilla and mix until combined.')
   });
 
 
