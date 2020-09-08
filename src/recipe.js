@@ -21,8 +21,8 @@ class Recipe {
   }
 
   getInstructions() {
-    let instructions = this.instructions.map(i => {
-      return i.instruction
+    let instructions = this.instructions.map(recipe => {
+      return recipe.instruction
     });
     return instructions
   }
