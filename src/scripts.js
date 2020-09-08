@@ -51,6 +51,12 @@ function generateUser() {
   findPantryInfo();
 }
 
+//GENERAL HELPER FUNCTIONS
+function createRecipeObject(recipes) {
+  let newRecipeObjects = recipes.map(recipe => new Recipe(recipe));
+  return newRecipeObjects
+}
+
 // CREATE RECIPE CARDS
 function createCards() {
   recipeData.forEach(recipe => {
@@ -207,6 +213,7 @@ function generateRecipeTitle(recipe, ingredients) {
     <h4>Ingredients</h4>
     <p>${ingredients}</p>`
   fullRecipeInfo.insertAdjacentHTML("beforeend", recipeTitle);
+  //put above shit into an if conditional to prevent more than one resippy from being clicked.
 }
 
 function addRecipeImage(recipe) {
@@ -219,11 +226,16 @@ function generateIngredients(recipe) {
   }).join(", ");
 }
 
-function generateInstructions(recipe) {
-  let instructionsList = ''
-  let instructions = recipe.getInstructions()
-  instructions.forEach(instruction => {
-    instructionsList += `<li>${instruction}</li>`
+function generateInstructions() {
+  let instructionsList = '';
+  let recipeObjects = createRecipeObject(recipeData);
+  let instructions = recipeObjects.map(singleRecipe => {
+    return singleRecipe.getInstructions()
+  });
+  instructions.forEach(individualInstructions => {
+    individualInstruction.forEach(iamupset => {
+      instructionsList += `<li>${iamupset}</li>`
+    })
   });
   fullRecipeInfo.insertAdjacentHTML("beforeend", "<h4>Instructions</h4>");
   fullRecipeInfo.insertAdjacentHTML("beforeend", `<ol>${instructionsList}</ol>`);
@@ -267,11 +279,6 @@ function filterNonSearched(filtered) {
     return !ids.includes(recipe.id)
   })
   hideUnselectedRecipes(found);
-}
-
-function createRecipeObject(recipes) {
-  recipes = recipes.map(recipe => new Recipe(recipe));
-  return recipes
 }
 
 function toggleMenu() {
