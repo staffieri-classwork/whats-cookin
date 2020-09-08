@@ -93,7 +93,7 @@ describe('User', () =>{
     expect(user.searchForRecipe('chicken')).to.deep.equal([recipe]);
   })
 
-  it('should be able to search for recipes by ingredient', () => {
+  it('should be able to search for recipes by another ingredient', () => {
     user.saveRecipe(recipe);
     user.saveRecipe(recipe2);
     expect(user.searchForRecipe('banana')).to.deep.equal([]);

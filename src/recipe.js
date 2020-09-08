@@ -26,6 +26,9 @@ class Recipe {
     });
     return instructions
   }
+  //only need to return the getInstructions this.instructions
+  // make a find by tag
+  // just do the classes and the testign for now get the data working then fix the display  
 
 };
 
