@@ -24,10 +24,13 @@ class Recipe {
     return this.instructions
   };
 
-  findByTag() {
-    console.log(this.tags)
-  };
-
+  findByTag(dataFile, tag) {
+    let filteredAnswers = dataFile.filter((recipe) => {
+      return recipe.tags.includes(tag)
+    })
+    return filteredAnswers
+  }
 };
+
 
 module.exports = Recipe;

@@ -54,7 +54,7 @@ describe('Recipe', () => {
   });
 
   it('should be able to filter by type tag', () => {
-    
+    expect(recipe.findByTag(recipeData, "dinner").length).to.deep.eq(1)
   });
 
 });
