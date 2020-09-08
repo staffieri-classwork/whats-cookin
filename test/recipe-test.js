@@ -6,11 +6,11 @@ import ingredientData from '../src/data/sample-ingredient-data';
 
 describe('Recipe', () => {
   let recipe;
-  let recipeInfo;
+  let recipe2;
 
   beforeEach(() => {
-    recipeInfo = recipeData[0];
-    recipe = new Recipe(recipeInfo);
+    recipe = new Recipe(recipeData[0]);
+    recipe2 = new Recipe(recipeData[1]);
   });
 
   it('is a function', () => {
@@ -53,6 +53,8 @@ describe('Recipe', () => {
     expect(recipe.getInstructions()[1].instruction).to.deep.eq('Add egg and vanilla and mix until combined.')
   });
 
-
+  it('should be able to filter by type tag', () => {
+    
+  });
 
 });

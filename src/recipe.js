@@ -24,7 +24,9 @@ class Recipe {
     return this.instructions
   };
 
-  
+  findByTag() {
+    console.log(this.tags)
+  };
 
 };
 
