@@ -226,16 +226,13 @@ function generateIngredients(recipe) {
   }).join(", ");
 }
 
-function generateInstructions() {
-  let instructionsList = '';
-  let recipeObjects = createRecipeObject(recipeData);
-  let instructions = recipeObjects.map(singleRecipe => {
-    return singleRecipe.getInstructions()
+function generateInstructions(recipe) {
+  let instructionsList = "";
+  let instructions = recipe.instructions.map(i => {
+    return i.instruction
   });
-  instructions.forEach(individualInstructions => {
-    individualInstruction.forEach(iamupset => {
-      instructionsList += `<li>${iamupset}</li>`
-    })
+  instructions.forEach(i => {
+    instructionsList += `<li>${i}</li>`
   });
   fullRecipeInfo.insertAdjacentHTML("beforeend", "<h4>Instructions</h4>");
   fullRecipeInfo.insertAdjacentHTML("beforeend", `<ol>${instructionsList}</ol>`);
