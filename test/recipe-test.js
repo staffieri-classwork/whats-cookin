@@ -1,7 +1,8 @@
 import { expect } from 'chai';
 
 import Recipe from '../src/recipe';
-import recipeData from '../src/data/recipe-data';
+import recipeData from '../src/data/sample-recipe-data';
+import ingredientData from '../src/data/sample-ingredient-data';
 
 describe('Recipe', () => {
   let recipe;
@@ -45,6 +46,13 @@ describe('Recipe', () => {
   });
 
   it('should calculate the total cost of all of the ingredients', () => {
-    expect(recipe.calculateIngredientsCost()).to.eq();
+    expect(recipe.calculateIngredientsCost(ingredientData)).to.eq('$177.76');
   });
+
+  it('should get the list of instructions for a specified recipe', () => {
+    expect(recipe.getInstructions()[1]).to.deep.eq('Add egg and vanilla and mix until combined.')
+  });
+
+
+
 });

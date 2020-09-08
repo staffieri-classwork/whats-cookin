@@ -7,12 +7,14 @@ describe('User', () =>{
   let user;
   let userInfo;
   let recipe;
+  let recipe2;
 
   beforeEach(() =>{
     userInfo = users[0];
     user = new User(userInfo)
 
-    recipe = {name: 'Chicken Parm', type: ['italian', 'dinner']};
+    recipe = {name: 'Chicken Parm', type: ['italian', 'dinner'], ingredients: ['chicken', 'parm', 'bread crumbs', 'eggs']};
+    recipe2 = {name: 'Scrambled Eggs', type: ['breakfast'], ingredients: ['eggs', 'milk', 'pepper']};
   });
 
   it('should be a function', () => {
@@ -64,11 +66,37 @@ describe('User', () =>{
 
   it('should be able to filter recipes by type', () => {
     user.saveRecipe(recipe);
+    user.saveRecipe(recipe2);
     expect(user.filterRecipes('italian')).to.deep.equal([recipe]);
   });
 
+  it('should return nothing if the searched item is not in type', () => {
+    user.saveRecipe(recipe2);
+    expect(user.filterRecipes('italian')).to.deep.equal([]);
+  })
+
   it('should be able to search recipes by name', () => {
     user.saveRecipe(recipe);
+    user.saveRecipe(recipe2);
     expect(user.searchForRecipe('Chicken Parm')).to.deep.equal([recipe]);
   });
+
+  it('should be able to search for recipes by ingredient', () => {
+    user.saveRecipe(recipe);
+    user.saveRecipe(recipe2);
+    expect(user.searchForRecipe('eggs')).to.deep.equal([recipe, recipe2]);
+  })
+
+  it('should be able to search for recipes by ingredient', () => {
+    user.saveRecipe(recipe);
+    user.saveRecipe(recipe2);
+    expect(user.searchForRecipe('chicken')).to.deep.equal([recipe]);
+  })
+
+  it('should be able to search for recipes by ingredient', () => {
+    user.saveRecipe(recipe);
+    user.saveRecipe(recipe2);
+    expect(user.searchForRecipe('banana')).to.deep.equal([]);
+  })
+
 });
