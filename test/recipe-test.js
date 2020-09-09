@@ -6,11 +6,11 @@ import ingredientData from '../src/data/sample-ingredient-data';
 
 describe('Recipe', () => {
   let recipe;
-  let recipeInfo;
+  let recipe2;
 
   beforeEach(() => {
-    recipeInfo = recipeData[0];
-    recipe = new Recipe(recipeInfo);
+    recipe = new Recipe(recipeData[0]);
+    recipe2 = new Recipe(recipeData[1]);
   });
 
   it('is a function', () => {
@@ -50,9 +50,15 @@ describe('Recipe', () => {
   });
 
   it('should get the list of instructions for a specified recipe', () => {
-    expect(recipe.getInstructions()[1]).to.deep.eq('Add egg and vanilla and mix until combined.')
+    expect(recipe.getInstructions()[1].instruction).to.deep.eq('Add egg and vanilla and mix until combined.')
   });
 
+  it('should be able to filter by type tag', () => {
+    expect(recipe.findByTag(recipeData, "dinner").length).to.deep.eq(1)
+  });
 
+  it('should be able to filter by type tag', () => {
+    expect(recipe.findByIngredient(recipeData, "pork").length).to.deep.eq(1)
+  });
 
 });

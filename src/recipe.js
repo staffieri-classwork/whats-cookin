@@ -21,12 +21,28 @@ class Recipe {
   }
 
   getInstructions() {
-    let instructions = this.instructions.map(recipe => {
-      return recipe.instruction
-    });
-    return instructions
+    return this.instructions
+  };
+
+  findByTag(dataFile, inputTag) {
+    let filteredAnswers = dataFile.filter((recipe) => {
+      return recipe.tags.includes(inputTag)
+    })
+    return filteredAnswers
+  }
+
+  findByIngredient(dataFile, inputIngredient) {
+    return dataFile.reduce((sortedByIngredient, recipe) => {
+      recipe.ingredients.forEach((ingredient) => {
+        if(ingredient.name.toLowerCase().includes(inputIngredient.toLowerCase())){
+          sortedByIngredient.push(recipe)
+        }
+      });
+      return sortedByIngredient
+    }, [])
   }
 
 };
+
 
 module.exports = Recipe;
