@@ -24,12 +24,24 @@ class Recipe {
     return this.instructions
   };
 
-  findByTag(dataFile, tag) {
+  findByTag(dataFile, inputTag) {
     let filteredAnswers = dataFile.filter((recipe) => {
-      return recipe.tags.includes(tag)
+      return recipe.tags.includes(inputTag)
     })
     return filteredAnswers
   }
+
+  findByIngredient(dataFile, inputIngredient) {
+    return dataFile.reduce((sortedByIngredient, recipe) => {
+      recipe.ingredients.forEach((ingredient) => {
+        if(ingredient.name.toLowerCase().includes(inputIngredient.toLowerCase())){
+          sortedByIngredient.push(recipe)
+        }
+      });
+      return sortedByIngredient
+    }, [])
+  }
+
 };
 
 
