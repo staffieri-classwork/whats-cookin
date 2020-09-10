@@ -13,7 +13,11 @@ checkIngredients(user, recipe) {
     });
     if(item === undefined || amountNeeded > item.amount){
       let amountOnHand = item && item.amount || 0
-       ingredientsNeeded.push({name: ingredientForRecipe.name, amountNeeded: ingredientForRecipe.quantity.amount - amountOnHand})
+       ingredientsNeeded.push(
+         {name: ingredientForRecipe.name,
+           amountNeeded:ingredientForRecipe.quantity.amount - amountOnHand,
+           id:ingredientForRecipe.id,
+         })
     }
     return ingredientsNeeded
   }, [])
