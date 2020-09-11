@@ -62,12 +62,12 @@ function createRecipeObject(recipes) {
 function createCards() {
   recipeData.forEach(recipe => {
     let recipeInfo = new Recipe(recipe);
-    let shortRecipeName = recipeInfo.name;
+    let recipeCardName = recipeInfo.name;
     recipes.push(recipeInfo);
     if (recipeInfo.name.length > 40) {
-      shortRecipeName = recipeInfo.name.substring(0, 40) + "...";
+      recipeCardName = recipeInfo.name.substring(0, 40) + "...";
     }
-    addToDom(recipeInfo, shortRecipeName)
+    addToDom(recipeInfo, recipeCardName)
   });
 }
 
