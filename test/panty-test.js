@@ -15,7 +15,7 @@ describe('Pantry', () => {
 
   beforeEach(() => {
     user = new User(userData[0]);
-    pantry = new Pantry(user);
+    pantry = new Pantry(user, ingredientData);
     recipe = new Recipe(recipeData[0]);
     recipe2 = new Recipe(recipeData[1]);
   });
@@ -33,7 +33,8 @@ describe('Pantry', () => {
   })
 
   it('should check to make sure the user has enough ingredients for a recipe in their pantry', () => {
-    console.log(pantry.checkIngredients(user, recipe))
+    // console.log(pantry.checkIngredients(user, recipe))
+    console.log(pantry.determineCost(user, recipe))
   })
 
 })
