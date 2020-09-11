@@ -9,26 +9,27 @@ import './css/styles.scss';
 import User from './user';
 import Recipe from './recipe';
 
-let allRecipesBtn = document.querySelector(".show-all-btn");
-let filterBtn = document.querySelector(".filter-btn");
-let fullRecipeInfo = document.querySelector(".recipe-instructions");
 let main = document.querySelector("main");
-let menuOpen = false;
-let pantryBtn = document.querySelector(".my-pantry-btn");
-let pantryInfo = [];
-let recipes = [];
-let savedRecipesBtn = document.querySelector(".saved-recipes-btn");
-let searchBtn = document.querySelector(".search-btn");
+let fullRecipeInfo = document.querySelector(".recipe-instructions");
+let tagList = document.querySelector(".tag-list");
 let searchForm = document.querySelector("#search");
 let searchInput = document.querySelector("#search-input");
+let allRecipesBtn = document.querySelector(".show-all-btn");
+let filterBtn = document.querySelector(".filter-btn");
+let pantryBtn = document.querySelector(".my-pantry-btn");
+let savedRecipesBtn = document.querySelector(".saved-recipes-btn");
+let searchBtn = document.querySelector(".search-btn");
 let showPantryRecipes = document.querySelector(".show-pantry-recipes-btn");
-let tagList = document.querySelector(".tag-list");
+let menuOpen = false;
+let pantryInfo = [];
+let recipes = [];
 let user;
 
 
 window.addEventListener("load", createCards);
 window.addEventListener("load", findTags);
 window.addEventListener("load", generateUser);
+
 allRecipesBtn.addEventListener("click", showAllRecipes);
 filterBtn.addEventListener("click", findCheckedBoxes);
 main.addEventListener("click", addToMyRecipes);
