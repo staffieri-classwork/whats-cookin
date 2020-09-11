@@ -34,7 +34,8 @@ describe('Pantry', () => {
 
   it('should check to make sure the user has enough ingredients for a recipe in their pantry', () => {
     // console.log(pantry.checkIngredients(user, recipe))
-    console.log(pantry.determineCost(user, recipe))
+    // console.log(pantry.determineCost(user, recipe))
+    console.log(pantry.addNecessay(user, recipe))
   })
 
 })
