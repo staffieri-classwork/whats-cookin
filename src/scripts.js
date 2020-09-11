@@ -58,6 +58,12 @@ function createRecipeObject(recipes) {
   return newRecipeObjects
 }
 
+function capitalize(words) {
+  return words.split(" ").map(word => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }).join(" ");
+}
+
 // CREATE RECIPE CARDS
 function createCards() {
   recipeData.forEach(recipe => {
@@ -98,21 +104,15 @@ function findTags() {
     });
   });
   tags.sort();
-  listTags(tags);
+  displayTags(tags);
 }
 
-function listTags(allTags) {
-  allTags.forEach(tag => {
-    let tagHtml = `<li><input type="checkbox" class="checked-tag" id="${tag}">
+function displayTags(allRecipeTags) {
+  allRecipeTags.forEach(tag => {
+    let tagHTML = `<li><input type="checkbox" class="checked-tag" id="${tag}">
       <label for="${tag}">${capitalize(tag)}</label></li>`;
-    tagList.insertAdjacentHTML("beforeend", tagHtml);
+    tagList.insertAdjacentHTML("beforeend", tagHTML);
   });
-}
-
-function capitalize(words) {
-  return words.split(" ").map(word => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  }).join(" ");
 }
 
 function findCheckedBoxes() {
