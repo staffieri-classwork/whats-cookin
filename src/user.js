@@ -1,5 +1,6 @@
 class User {
   constructor(user) {
+    // console.log(user)
     this.id = user.id;
     this.name = user.name;
     this.pantry = user.pantry;

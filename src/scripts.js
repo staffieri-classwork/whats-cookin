@@ -2,12 +2,24 @@ import $ from 'jquery';
 import users from './data/users-data';
 import recipeData from  './data/recipe-data';
 import ingredientData from './data/ingredient-data';
-
+import User from './user';
+import Recipe from './recipe';
 import './css/base.scss';
 import './css/styles.scss';
 
-import User from './user';
-import Recipe from './recipe';
+let userID = Math.floor((Math.random() * 50) + 1);
+let loggedInUser;
+
+fetch("https:fe-apps.herokuapp.com/api/v1/whats-cookin/1911/users/wcUsersData")
+  .then (response => response.json())
+  .then(users => users.wcUsersData.find((user) => user.id === userID))
+  .then((data) => loggedInUser = new User(data))
+  .then(() => console.log(loggedInUser))
+
+
+
+
+// console.log(loggedInUser)
 
 let allRecipesBtn = document.querySelector(".show-all-btn");
 let filterBtn = document.querySelector(".filter-btn");
