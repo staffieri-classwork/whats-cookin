@@ -31,9 +31,11 @@ function getRecipes() {
 }
 
 function getIngredients() {
-  const ingredientDataApi = fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/ingredients/ingredientsData")
+  const ingredientDataApi = "https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/ingredients/ingredientsData"
+  const promise = fetch(ingredientDataApi)
     .then(response => response.json())
-    .then((ingredient) => ingredient.ingredientsData
+    // .then((ingredient) => ingredient.ingredientsData
+  return promise;
 }
 
 Promise.all([userDataApi , ingredientDataApi])
