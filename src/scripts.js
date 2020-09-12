@@ -77,9 +77,9 @@ showPantryRecipes.addEventListener("click", findCheckedPantryBoxes);
 searchForm.addEventListener("submit", pressEnterSearch);
 
 function onLoadContent() {
-  let promise1 =
-  let promise2 =
-  let promise3 =
+  let promise1 = Pantry.getIngredients()
+  let promise2 = Recipe.getRecipes()
+  let promise3 = User.getUsers(userId)
   Promise.all([promise1, promise2, promise3])
     .then(values => {
       //DOM shenanigans
