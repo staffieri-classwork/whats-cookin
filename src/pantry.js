@@ -44,9 +44,9 @@ determineCost(user, recipe) {
   return estimatedCostNeeded.join('; also ')
 }
 
-addNecessay(user, recipe){
-  
-}
+// addNecessay(user, recipe){
+//
+// }
 
 }
 
