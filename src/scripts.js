@@ -7,19 +7,30 @@ import Recipe from './recipe';
 import './css/base.scss';
 import './css/styles.scss';
 
-let userID = Math.floor((Math.random() * 50) + 1);
-let loggedInUser;
+let pickles;
 
-fetch("https:fe-apps.herokuapp.com/api/v1/whats-cookin/1911/users/wcUsersData")
+let userID = Math.floor((Math.random() * 50) + 1);
+
+const userDataApi = fetch("https:fe-apps.herokuapp.com/api/v1/whats-cookin/1911/users/wcUsersData")
   .then (response => response.json())
   .then(users => users.wcUsersData.find((user) => user.id === userID))
-  .then((data) => loggedInUser = new User(data))
-  .then(() => console.log(loggedInUser))
 
+const recipeDataApi = fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/recipes/recipeData")
+  .then(response => response.json())
+  .then(recipe => recipe.recipeData)
 
+const ingredientDataApi = fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/ingredients/ingredientsData")
+  .then(response => response.json())
+  .then((ingredient) => pickles = ingredient.ingredientsData)
 
-
-// console.log(loggedInUser)
+Promise.all([userDataApi , ingredientDataApi])
+  .then((values) => {
+    values[0].pantry.forEach(ingredient => {
+      let currentIngredient = values[1].find(ing => ingredient.ingredient === ing.id)
+      ingredient.name = currentIngredient.name
+    })
+  });
+ingredientDataApi.then(() => console.log(createRecipeObject(pickles)))
 
 let allRecipesBtn = document.querySelector(".show-all-btn");
 let filterBtn = document.querySelector(".filter-btn");
