@@ -7,6 +7,8 @@ import Recipe from './recipe';
 import './css/base.scss';
 import './css/styles.scss';
 
+let pickles;
+
 let userID = Math.floor((Math.random() * 50) + 1);
 
 const userDataApi = fetch("https:fe-apps.herokuapp.com/api/v1/whats-cookin/1911/users/wcUsersData")
@@ -19,7 +21,7 @@ const recipeDataApi = fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1
 
 const ingredientDataApi = fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/ingredients/ingredientsData")
   .then(response => response.json())
-  .then(ingredient => ingredient.ingredientsData)
+  .then((ingredient) => pickles = ingredient.ingredientsData)
 
 Promise.all([userDataApi , ingredientDataApi])
   .then((values) => {
@@ -28,6 +30,7 @@ Promise.all([userDataApi , ingredientDataApi])
       ingredient.name = currentIngredient.name
     })
   });
+ingredientDataApi.then(() => console.log(createRecipeObject(pickles)))
 
 let allRecipesBtn = document.querySelector(".show-all-btn");
 let filterBtn = document.querySelector(".filter-btn");
