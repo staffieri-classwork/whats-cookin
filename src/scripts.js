@@ -14,9 +14,11 @@ let newRecipeObjects;
 let userID = Math.floor((Math.random() * 50) + 1);
 
 function getUsers() {
-const userDataApi = fetch("https:fe-apps.herokuapp.com/api/v1/whats-cookin/1911/users/wcUsersData")
-  .then (response => response.json())
-  .then(users => users.wcUsersData.find((user) => user.id === userID))
+  const userDataApi = "https:fe-apps.herokuapp.com/api/v1/whats-cookin/1911/users/wcUsersData"
+  const promise = fetch(userDataApi)
+    .then (response => response.json())
+    // .then(users => users.wcUsersData.find((user) => user.id === userID))
+  return promise;
 }
 
 function getRecipes() {
