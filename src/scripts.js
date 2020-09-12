@@ -22,10 +22,12 @@ function getUsers() {
 }
 
 function getRecipes() {
-  const recipeDataApi = fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/recipes/recipeData")
+  const recipeDataApi = "https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/recipes/recipeData"
+  const promise = fetch(recipeDataApi)
     .then(response => response.json())
-    .then((recipe) => pickles = recipe.recipeData)
-    .then(() => console.log(createRecipeObject(pickles)))
+    // .then((recipe) => pickles = recipe.recipeData)
+    // .then(() => console.log(createRecipeObject(pickles)))
+  return promise;
 }
 
 function getIngredients() {
