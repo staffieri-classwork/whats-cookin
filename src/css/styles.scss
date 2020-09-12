@@ -3,8 +3,9 @@ $main-font: "Quicksand", sans-serif;
 $title-font: "Sulphur Point", sans-serif;
 
 //COLOURS
-$main-blue: #5B7894;
 $white: #fff;
+$black: #000000;
+$main-blue: #5B7894;
 $seafoam: #84C8A4;
 $green: #359567;
 $lime-green: #C4EB67;
@@ -12,6 +13,19 @@ $pale-blue: #DAE4EE;
 
 //MEASUREMENTS
 $zero: 0px 0px 0px 0px;
+
+//EXTENDS
+%button-shared {
+  background-color: $green;
+  border: 0;
+  border-radius: 3px;
+  color: $white;
+  cursor: pointer;
+  font-family: $main-font;
+  font-size: 12pt;
+  font-weight: bold;
+  padding: 5px 10px 5px 10px;
+}
 
 
 body {
@@ -325,15 +339,7 @@ main {
 .show-pantry-recipes-btn,
 .show-all-btn,
 .filter-btn {
-  background-color: $green;
-  border: 0;
-  border-radius: 3px;
-  color: $white;
-  cursor: pointer;
-  font-family: $main-font;
-  font-size: 12pt;
-  font-weight: bold;
-  padding: 5px 10px 5px 10px;
+  @extend %button-shared
 }
 
 .show-pantry-recipes-btn {
@@ -373,7 +379,7 @@ main {
 }
 
 .pantry-list {
-  color: #000000;
+  color: $black;
   padding-left: 15px;
   text-align: left;
 }
