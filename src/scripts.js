@@ -32,26 +32,27 @@ Promise.all([userDataApi , ingredientDataApi])
   });
 ingredientDataApi.then(() => console.log(createRecipeObject(pickles)))
 
-let allRecipesBtn = document.querySelector(".show-all-btn");
-let filterBtn = document.querySelector(".filter-btn");
-let fullRecipeInfo = document.querySelector(".recipe-instructions");
 let main = document.querySelector("main");
-let menuOpen = false;
-let pantryBtn = document.querySelector(".my-pantry-btn");
-let pantryInfo = [];
-let recipes = [];
-let savedRecipesBtn = document.querySelector(".saved-recipes-btn");
-let searchBtn = document.querySelector(".search-btn");
+let fullRecipeInfo = document.querySelector(".recipe-instructions");
+let tagList = document.querySelector(".tag-list");
 let searchForm = document.querySelector("#search");
 let searchInput = document.querySelector("#search-input");
+let allRecipesBtn = document.querySelector(".show-all-btn");
+let filterBtn = document.querySelector(".filter-btn");
+let pantryBtn = document.querySelector(".my-pantry-btn");
+let savedRecipesBtn = document.querySelector(".saved-recipes-btn");
+let searchBtn = document.querySelector(".search-btn");
 let showPantryRecipes = document.querySelector(".show-pantry-recipes-btn");
-let tagList = document.querySelector(".tag-list");
+let menuOpen = false;
+let pantryInfo = [];
+let recipes = [];
 let user;
 
 
 window.addEventListener("load", createCards);
 window.addEventListener("load", findTags);
 window.addEventListener("load", generateUser);
+
 allRecipesBtn.addEventListener("click", showAllRecipes);
 filterBtn.addEventListener("click", findCheckedBoxes);
 main.addEventListener("click", addToMyRecipes);
@@ -80,23 +81,29 @@ function createRecipeObject(recipes) {
   return newRecipeObjects
 }
 
+function capitalize(words) {
+  return words.split(" ").map(word => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }).join(" ");
+}
+
 // CREATE RECIPE CARDS
 function createCards() {
   recipeData.forEach(recipe => {
     let recipeInfo = new Recipe(recipe);
-    let shortRecipeName = recipeInfo.name;
+    let recipeCardName = recipeInfo.name;
     recipes.push(recipeInfo);
     if (recipeInfo.name.length > 40) {
-      shortRecipeName = recipeInfo.name.substring(0, 40) + "...";
+      recipeCardName = recipeInfo.name.substring(0, 40) + "...";
     }
-    addToDom(recipeInfo, shortRecipeName)
+    displayRecipeCard(recipeInfo, recipeCardName)
   });
 }
 
-function addToDom(recipeInfo, shortRecipeName) {
-  let cardHtml = `
+function displayRecipeCard(recipeInfo, recipeCardName) {
+  let cardHTML = `
     <div class="recipe-card" id=${recipeInfo.id}>
-      <h3 maxlength="40">${shortRecipeName}</h3>
+      <h3 maxlength="40">${recipeCardName}</h3>
       <div class="card-photo-container">
         <img src=${recipeInfo.image} class="card-photo-preview" alt="${recipeInfo.name} recipe" title="${recipeInfo.name} recipe">
         <div class="text">
@@ -106,7 +113,7 @@ function addToDom(recipeInfo, shortRecipeName) {
       <h4>${recipeInfo.tags[0]}</h4>
       <img src="../images/apple-logo-outline.png" alt="unfilled apple icon" class="card-apple-icon">
     </div>`
-  main.insertAdjacentHTML("beforeend", cardHtml);
+  main.insertAdjacentHTML("beforeend", cardHTML);
 }
 
 // FILTER BY RECIPE TAGS
@@ -120,21 +127,15 @@ function findTags() {
     });
   });
   tags.sort();
-  listTags(tags);
+  displayTags(tags);
 }
 
-function listTags(allTags) {
-  allTags.forEach(tag => {
-    let tagHtml = `<li><input type="checkbox" class="checked-tag" id="${tag}">
+function displayTags(allRecipeTags) {
+  allRecipeTags.forEach(tag => {
+    let tagHTML = `<li><input type="checkbox" class="checked-tag" id="${tag}">
       <label for="${tag}">${capitalize(tag)}</label></li>`;
-    tagList.insertAdjacentHTML("beforeend", tagHtml);
+    tagList.insertAdjacentHTML("beforeend", tagHTML);
   });
-}
-
-function capitalize(words) {
-  return words.split(" ").map(word => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  }).join(" ");
 }
 
 function findCheckedBoxes() {
@@ -173,8 +174,8 @@ function filterRecipes(filtered) {
 
 function hideUnselectedRecipes(foundRecipes) {
   foundRecipes.forEach(recipe => {
-    let domRecipe = document.getElementById(`${recipe.id}`);
-    domRecipe.style.display = "none";
+    let displayedRecipe = document.getElementById(`${recipe.id}`);
+    displayedRecipe.style.display = "none";
   });
 }
 
@@ -194,6 +195,14 @@ function addToMyRecipes() {
   } else if (isDescendant(event.target.closest(".recipe-card"), event.target)) {
     openRecipeInfo(event);
   }
+} //this could be refactored. look at seperating the functionality of changing the apple image into its own function, might make things more srp. add it to the wishlist if we get stuff finished up! would have to add some functionality to the user.js class as well to get this working and seperated. 
+
+function addToMyRecipes() {
+
+}
+
+function toggleApples() {
+
 }
 
 function isDescendant(parent, child) {
@@ -236,7 +245,6 @@ function generateRecipeTitle(recipe, ingredients) {
     <h4>Ingredients</h4>
     <p>${ingredients}</p>`
   fullRecipeInfo.insertAdjacentHTML("beforeend", recipeTitle);
-  //put above shit into an if conditional to prevent more than one resippy from being clicked.
 }
 
 function addRecipeImage(recipe) {
@@ -244,18 +252,18 @@ function addRecipeImage(recipe) {
 }
 
 function generateIngredients(recipe) {
-  return recipe && recipe.ingredients.map(i => {
-    return `${capitalize(i.name)} (${i.quantity.amount} ${i.quantity.unit})`
+  return recipe && recipe.ingredients.map(ingredient => {
+    return `${capitalize(ingredient.name)} (${ingredient.quantity.amount} ${ingredient.quantity.unit})`
   }).join(", ");
 }
 
 function generateInstructions(recipe) {
   let instructionsList = "";
-  let instructions = recipe.instructions.map(i => {
-    return i.instruction
+  let instructions = recipe.instructions.map(ingredient => {
+    return ingredient.instruction
   });
-  instructions.forEach(i => {
-    instructionsList += `<li>${i}</li>`
+  instructions.forEach(instruction => {
+    instructionsList += `<li>${instruction}</li>`
   });
   fullRecipeInfo.insertAdjacentHTML("beforeend", "<h4>Instructions</h4>");
   fullRecipeInfo.insertAdjacentHTML("beforeend", `<ol>${instructionsList}</ol>`);
