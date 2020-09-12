@@ -14,8 +14,12 @@ fetch("https:fe-apps.herokuapp.com/api/v1/whats-cookin/1911/users/wcUsersData")
   .then (response => response.json())
   .then(users => users.wcUsersData.find((user) => user.id === userID))
   .then((data) => loggedInUser = new User(data))
-  .then(() => console.log(loggedInUser))
+  // .then(() => console.log(loggedInUser))
 
+fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/ingredients/ingredientsData")
+  .then(response => response.json())
+  .then(ingredient => console.log(ingredient.ingredientsData))
+  // .then((ingredients) => console.log(recipe.ingredients.id))
 
 
 
