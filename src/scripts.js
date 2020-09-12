@@ -8,22 +8,26 @@ import './css/base.scss';
 import './css/styles.scss';
 
 let userID = Math.floor((Math.random() * 50) + 1);
-let loggedInUser;
 
-fetch("https:fe-apps.herokuapp.com/api/v1/whats-cookin/1911/users/wcUsersData")
+const userDataApi = fetch("https:fe-apps.herokuapp.com/api/v1/whats-cookin/1911/users/wcUsersData")
   .then (response => response.json())
   .then(users => users.wcUsersData.find((user) => user.id === userID))
-  .then((data) => loggedInUser = new User(data))
-  // .then(() => console.log(loggedInUser))
 
-fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/ingredients/ingredientsData")
+const recipeDataApi = fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/recipes/recipeData")
   .then(response => response.json())
-  .then(ingredient => console.log(ingredient.ingredientsData))
-  // .then((ingredients) => console.log(recipe.ingredients.id))
+  .then(recipe => recipe.recipeData)
 
+const ingredientDataApi = fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/ingredients/ingredientsData")
+  .then(response => response.json())
+  .then(ingredient => ingredient.ingredientsData)
 
-
-// console.log(loggedInUser)
+Promise.all([userDataApi , ingredientDataApi])
+  .then((values) => {
+    values[0].pantry.forEach(ingredient => {
+      let currentIngredient = values[1].find(ing => ingredient.ingredient === ing.id)
+      ingredient.name = currentIngredient.name
+    })
+  });
 
 let allRecipesBtn = document.querySelector(".show-all-btn");
 let filterBtn = document.querySelector(".filter-btn");
