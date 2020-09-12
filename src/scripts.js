@@ -94,18 +94,18 @@ searchForm.addEventListener("submit", pressEnterSearch);
 // GENERATE A USER ON LOAD
 function generateUser() {
   user = new User(users[Math.floor(Math.random() * users.length)]);
-  let firstName = user.name.split(" ")[0];
+  let firstName = user.name.split(" ")[0];// here up one function
   let welcomeMsg = `
     <div class="welcome-msg">
       <h1>Welcome ${firstName}!</h1>
     </div>`;
   document.querySelector(".banner-image").insertAdjacentHTML("afterbegin",
-    welcomeMsg);
-  findPantryInfo();
+    welcomeMsg); //here up render function
+  findPantryInfo();//wat do?
 }
 
 //GENERAL HELPER FUNCTIONS
-function createRecipeObject(recipes) {
+function createRecipeObject(recipes) { //Still needed? Input? where does this live?
   let newRecipeObjects = recipes.map(recipe => new Recipe(recipe));
   return newRecipeObjects
 }
@@ -115,29 +115,29 @@ function createCards() {
   recipeData.forEach(recipe => {
     let recipeInfo = new Recipe(recipe);
     let shortRecipeName = recipeInfo.name;
-    recipes.push(recipeInfo);
+    recipes.push(recipeInfo); // here up one function
     if (recipeInfo.name.length > 40) {
       shortRecipeName = recipeInfo.name.substring(0, 40) + "...";
-    }
-    addToDom(recipeInfo, shortRecipeName)
+    } // one function to check and handle recipe name length
+    addToDom(recipeInfo, shortRecipeName) // moved to domUpdates.js
   });
 }
 
-function addToDom(recipeInfo, shortRecipeName) {
-  let cardHtml = `
-    <div class="recipe-card" id=${recipeInfo.id}>
-      <h3 maxlength="40">${shortRecipeName}</h3>
-      <div class="card-photo-container">
-        <img src=${recipeInfo.image} class="card-photo-preview" alt="${recipeInfo.name} recipe" title="${recipeInfo.name} recipe">
-        <div class="text">
-          <div>Click for Instructions</div>
-        </div>
-      </div>
-      <h4>${recipeInfo.tags[0]}</h4>
-      <img src="../images/apple-logo-outline.png" alt="unfilled apple icon" class="card-apple-icon">
-    </div>`
-  main.insertAdjacentHTML("beforeend", cardHtml);
-}
+// function addToDom(recipeInfo, shortRecipeName) { // moved to domUpdates.js
+//   let cardHtml = `
+//     <div class="recipe-card" id=${recipeInfo.id}>
+//       <h3 maxlength="40">${shortRecipeName}</h3>
+//       <div class="card-photo-container">
+//         <img src=${recipeInfo.image} class="card-photo-preview" alt="${recipeInfo.name} recipe" title="${recipeInfo.name} recipe">
+//         <div class="text">
+//           <div>Click for Instructions</div>
+//         </div>
+//       </div>
+//       <h4>${recipeInfo.tags[0]}</h4>
+//       <img src="../images/apple-logo-outline.png" alt="unfilled apple icon" class="card-apple-icon">
+//     </div>`
+//   main.insertAdjacentHTML("beforeend", cardHtml);
+// }
 
 // FILTER BY RECIPE TAGS
 function findTags() {
