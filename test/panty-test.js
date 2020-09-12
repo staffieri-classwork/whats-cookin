@@ -33,14 +33,18 @@ describe('Pantry', () => {
   })
 
   it('should check to make sure the user has enough ingredients for a recipe in their pantry', () => {
-    // console.log(pantry.checkIngredients(user, recipe))
-    // console.log(pantry.determineCost(user, recipe))
-    console.log(pantry.addNecessay(user, recipe))
+    expect(pantry.checkIngredients(user, recipe)[0]).to.deep.equal({
+      name: 'sea salt',
+      amountNeeded: 24,
+      id: 1012047,
+      unitsNeeded: 'servings'
+    })
   })
 
 })
 
-
+// console.log(pantry.determineCost(user, recipe))
+// console.log(pantry.addNecessay(user, recipe))
 
 
 

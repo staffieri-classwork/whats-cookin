@@ -45,7 +45,7 @@ determineCost(user, recipe) {
 }
 
 addNecessay(user, recipe){
-  checkIngredients(user, recipe)
+  
 }
 
 }
