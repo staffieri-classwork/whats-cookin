@@ -41,11 +41,11 @@ describe('Pantry', () => {
     })
   })
 
+  it('should be able to update the user based on items needed for the recipe and estimated cost', () => {
+    expect(pantry.determineCost(user, recipe)).to.equal("We need to get 24 more servings sea salt
+    that will roughly cost $126.72 for the recipe; also We need
+    to get 2 more c semisweet chocolate chips that will roughly cost $5.06 for the recipe"
+    )
+    })
+
 })
-
-// console.log(pantry.determineCost(user, recipe))
-// console.log(pantry.addNecessay(user, recipe))
-
-
-
-//
