@@ -7,17 +7,24 @@ import Recipe from './recipe';
 import './css/base.scss';
 import './css/styles.scss';
 
-let cookBook;
+let pickles;
+let dillPickles;
+let newRecipeObjects;
 
 let userID = Math.floor((Math.random() * 50) + 1);
 
+function getUsers() {
 const userDataApi = fetch("https:fe-apps.herokuapp.com/api/v1/whats-cookin/1911/users/wcUsersData")
   .then (response => response.json())
   .then(users => users.wcUsersData.find((user) => user.id === userID))
+}
+
 
 const recipeDataApi = fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/recipes/recipeData")
   .then(response => response.json())
-  .then((recipe) => cookBook = recipe.recipeData)
+  .then((recipe) => pickles = recipe.recipeData)
+  .then(() => console.log(createRecipeObject(pickles)))
+  //.then UPDATE DOM stuff.
 
 const ingredientDataApi = fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/ingredients/ingredientsData")
   .then(response => response.json())
@@ -30,7 +37,7 @@ Promise.all([userDataApi , ingredientDataApi])
       ingredient.name = currentIngredient.name
     })
   });
-ingredientDataApi.then(() => console.log(createRecipeObject(cookBook)))
+
 
 let allRecipesBtn = document.querySelector(".show-all-btn");
 let filterBtn = document.querySelector(".filter-btn");
@@ -76,7 +83,7 @@ function generateUser() {
 
 //GENERAL HELPER FUNCTIONS
 function createRecipeObject(recipes) {
-  let newRecipeObjects = recipes.map(recipe => new Recipe(cookBook));
+  let newRecipeObjects = recipes.map(recipe => new Recipe(recipe));
   return newRecipeObjects
 }
 
