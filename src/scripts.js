@@ -151,8 +151,8 @@ function filterRecipes(filtered) {
 
 function hideUnselectedRecipes(foundRecipes) {
   foundRecipes.forEach(recipe => {
-    let domRecipe = document.getElementById(`${recipe.id}`);
-    domRecipe.style.display = "none";
+    let displayedRecipe = document.getElementById(`${recipe.id}`);
+    displayedRecipe.style.display = "none";
   });
 }
 
@@ -172,7 +172,7 @@ function addToMyRecipes() {
   } else if (isDescendant(event.target.closest(".recipe-card"), event.target)) {
     openRecipeInfo(event);
   }
-}
+} //this could be refactored. look at seperating the functionality of changing the apple image into its own function, might make things more srp.
 
 function isDescendant(parent, child) {
   let node = child;
@@ -214,7 +214,6 @@ function generateRecipeTitle(recipe, ingredients) {
     <h4>Ingredients</h4>
     <p>${ingredients}</p>`
   fullRecipeInfo.insertAdjacentHTML("beforeend", recipeTitle);
-  //put above shit into an if conditional to prevent more than one resippy from being clicked.
 }
 
 function addRecipeImage(recipe) {
@@ -222,18 +221,18 @@ function addRecipeImage(recipe) {
 }
 
 function generateIngredients(recipe) {
-  return recipe && recipe.ingredients.map(i => {
-    return `${capitalize(i.name)} (${i.quantity.amount} ${i.quantity.unit})`
+  return recipe && recipe.ingredients.map(ingredient => {
+    return `${capitalize(ingredient.name)} (${ingredient.quantity.amount} ${ingredient.quantity.unit})`
   }).join(", ");
 }
 
 function generateInstructions(recipe) {
   let instructionsList = "";
-  let instructions = recipe.instructions.map(i => {
-    return i.instruction
+  let instructions = recipe.instructions.map(ingredient => {
+    return ingredient.instruction
   });
-  instructions.forEach(i => {
-    instructionsList += `<li>${i}</li>`
+  instructions.forEach(instruction => {
+    instructionsList += `<li>${instruction}</li>`
   });
   fullRecipeInfo.insertAdjacentHTML("beforeend", "<h4>Instructions</h4>");
   fullRecipeInfo.insertAdjacentHTML("beforeend", `<ol>${instructionsList}</ol>`);
