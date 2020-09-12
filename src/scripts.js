@@ -38,13 +38,13 @@ function getIngredients() {
   return promise;
 }
 
-Promise.all([userDataApi , ingredientDataApi])
-  .then((values) => {
-    values[0].pantry.forEach(ingredient => {
-      let currentIngredient = values[1].find(ing => ingredient.ingredient === ing.id)
-      ingredient.name = currentIngredient.name
-    })
-  });
+// Promise.all([userDataApi , ingredientDataApi])
+//   .then((values) => {
+//     values[0].pantry.forEach(ingredient => {
+//       let currentIngredient = values[1].find(ing => ingredient.ingredient === ing.id)
+//       ingredient.name = currentIngredient.name
+//     })
+//   });
 
 
 let allRecipesBtn = document.querySelector(".show-all-btn");
@@ -75,6 +75,16 @@ savedRecipesBtn.addEventListener("click", showSavedRecipes);
 searchBtn.addEventListener("click", searchRecipes);
 showPantryRecipes.addEventListener("click", findCheckedPantryBoxes);
 searchForm.addEventListener("submit", pressEnterSearch);
+
+function onLoadContent() {
+  let promise1 =
+  let promise2 =
+  let promise3 =
+  Promise.all([promise1, promise2, promise3])
+    .then(values => {
+      //DOM shenanigans
+    })
+}
 
 // GENERATE A USER ON LOAD
 function generateUser() {
