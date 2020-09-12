@@ -19,16 +19,18 @@ const userDataApi = fetch("https:fe-apps.herokuapp.com/api/v1/whats-cookin/1911/
   .then(users => users.wcUsersData.find((user) => user.id === userID))
 }
 
+function getRecipes() {
+  const recipeDataApi = fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/recipes/recipeData")
+    .then(response => response.json())
+    .then((recipe) => pickles = recipe.recipeData)
+    .then(() => console.log(createRecipeObject(pickles)))
+}
 
-const recipeDataApi = fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/recipes/recipeData")
-  .then(response => response.json())
-  .then((recipe) => pickles = recipe.recipeData)
-  .then(() => console.log(createRecipeObject(pickles)))
-  //.then UPDATE DOM stuff.
-
-const ingredientDataApi = fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/ingredients/ingredientsData")
-  .then(response => response.json())
-  .then((ingredient) => ingredient.ingredientsData)
+function getIngredients() {
+  const ingredientDataApi = fetch("https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/ingredients/ingredientsData")
+    .then(response => response.json())
+    .then((ingredient) => ingredient.ingredientsData
+}
 
 Promise.all([userDataApi , ingredientDataApi])
   .then((values) => {
