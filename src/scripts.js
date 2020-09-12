@@ -172,7 +172,15 @@ function addToMyRecipes() {
   } else if (isDescendant(event.target.closest(".recipe-card"), event.target)) {
     openRecipeInfo(event);
   }
-} //this could be refactored. look at seperating the functionality of changing the apple image into its own function, might make things more srp.
+} //this could be refactored. look at seperating the functionality of changing the apple image into its own function, might make things more srp. add it to the wishlist if we get stuff finished up! would have to add some functionality to the user.js class as well to get this working and seperated. 
+
+function addToMyRecipes() {
+
+}
+
+function toggleApples() {
+
+}
 
 function isDescendant(parent, child) {
   let node = child;
