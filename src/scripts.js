@@ -48,20 +48,20 @@ let userID = Math.floor((Math.random() * 50) + 1);
 //   });
 
 
+let main = document.querySelector("main");
+let tagList = document.querySelector(".tag-list");
+let searchForm = document.querySelector("#search");
+let searchInput = document.querySelector("#search-input");
 let allRecipesBtn = document.querySelector(".show-all-btn");
 let filterBtn = document.querySelector(".filter-btn");
 let fullRecipeInfo = document.querySelector(".recipe-instructions");
-let main = document.querySelector("main");
-let menuOpen = false;
 let pantryBtn = document.querySelector(".my-pantry-btn");
-let pantryInfo = [];
-let recipes = [];
 let savedRecipesBtn = document.querySelector(".saved-recipes-btn");
 let searchBtn = document.querySelector(".search-btn");
-let searchForm = document.querySelector("#search");
-let searchInput = document.querySelector("#search-input");
 let showPantryRecipes = document.querySelector(".show-pantry-recipes-btn");
-let tagList = document.querySelector(".tag-list");
+let pantryInfo = [];
+let recipes = [];
+let menuOpen = false;
 let user;
 
 
@@ -77,31 +77,28 @@ searchBtn.addEventListener("click", searchRecipes);
 showPantryRecipes.addEventListener("click", findCheckedPantryBoxes);
 searchForm.addEventListener("submit", pressEnterSearch);
 
-// function onLoadContent() {
-//   let promise1 = Pantry.getIngredients()
-//   let promise2 = Recipe.getRecipes()
-//   let promise3 = User.getUsers(userId)
-//   Promise.all([promise1, promise2, promise3])
-//     .then(values => {
-//       // .then((ingredient) => ingredient.ingredientsData
-//       // .then((recipe) => pickles = recipe.recipeData)
-//       // .then(users => users.wcUsersData.find((user) => user.id === userID))
-//
-//       //DOM shenanigans
-//     })
-// }
-
 // GENERATE A USER ON LOAD
 function generateUser() {
   user = new User(users[Math.floor(Math.random() * users.length)]);
   let firstName = user.name.split(" ")[0];// here up one function
+  welcomeMessage(firstName)
+  // let welcomeMsg = `
+  //   <div class="welcome-msg">
+  //     <h1>Welcome ${firstName}!</h1>
+  //   </div>`;
+  // document.querySelector(".banner-image").insertAdjacentHTML("afterbegin",
+  //   welcomeMsg); //here up render function
+  findPantryInfo();//wat do?
+}
+
+function welcomeMessage(userName) {
   let welcomeMsg = `
     <div class="welcome-msg">
-      <h1>Welcome ${firstName}!</h1>
+      <h1>Welcome ${userName}!</h1>
     </div>`;
   document.querySelector(".banner-image").insertAdjacentHTML("afterbegin",
-    welcomeMsg); //here up render function
-  findPantryInfo();//wat do?
+    welcomeMsg);
+  return welcomeMsg
 }
 
 //GENERAL HELPER FUNCTIONS
@@ -116,28 +113,19 @@ function createCards() {
     let recipeInfo = new Recipe(recipe);
     let shortRecipeName = recipeInfo.name;
     recipes.push(recipeInfo); // here up one function
-    if (recipeInfo.name.length > 40) {
-      shortRecipeName = recipeInfo.name.substring(0, 40) + "...";
-    } // one function to check and handle recipe name length
+    checkNameLength(recipeInfo, shortRecipeName)
+    // if (recipeInfo.name.length > 40) {
+    //   shortRecipeName = recipeInfo.name.substring(0, 40) + "...";
+    // } // one function to check and handle recipe name length
     addToDom(recipeInfo, shortRecipeName) // moved to domUpdates.js
   });
 }
 
-// function addToDom(recipeInfo, shortRecipeName) { // moved to domUpdates.js
-//   let cardHtml = `
-//     <div class="recipe-card" id=${recipeInfo.id}>
-//       <h3 maxlength="40">${shortRecipeName}</h3>
-//       <div class="card-photo-container">
-//         <img src=${recipeInfo.image} class="card-photo-preview" alt="${recipeInfo.name} recipe" title="${recipeInfo.name} recipe">
-//         <div class="text">
-//           <div>Click for Instructions</div>
-//         </div>
-//       </div>
-//       <h4>${recipeInfo.tags[0]}</h4>
-//       <img src="../images/apple-logo-outline.png" alt="unfilled apple icon" class="card-apple-icon">
-//     </div>`
-//   main.insertAdjacentHTML("beforeend", cardHtml);
-// }
+function checkNameLength(recipeData, recipeName) {
+  if (recipeData.name.length > 40) {
+    recipeName = recipeData.name.substring(0, 40) + "...";
+  } // one function to check and handle recipe name length
+}
 
 // FILTER BY RECIPE TAGS
 // function findTags() { //recipe.findByTag() Same same
@@ -390,7 +378,7 @@ function capitalize(words) { //stay for Scripts
 //   }
 // }
 
-// function findRecipesWithCheckedIngredients(selected) { // Scripts 
+// function findRecipesWithCheckedIngredients(selected) { // Scripts
 //   let recipeChecker = (arr, target) => target.every(v => arr.includes(v));
 //   let ingredientNames = selected.map(item => {
 //     return item.id;
