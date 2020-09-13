@@ -55,8 +55,94 @@ function addToDom(recipeInfo, shortRecipeName) {
   main.insertAdjacentHTML("beforeend", cardHtml);
 }
 
+function listTags(allTags) {
+  allTags.forEach(tag => {
+    let tagHtml = `<li><input type="checkbox" class="checked-tag" id="${tag}">
+      <label for="${tag}">${capitalize(tag)}</label></li>`;
+    tagList.insertAdjacentHTML("beforeend", tagHtml);
+  });
+}
 
+function findCheckedBoxes() {
+  let tagCheckboxes = document.querySelectorAll(".checked-tag");
+  let checkboxInfo = Array.from(tagCheckboxes)
+  let selectedTags = checkboxInfo.filter(box => {
+    return box.checked;
+  })
+  findTaggedRecipes(selectedTags);
+}
 
+function hideUnselectedRecipes(foundRecipes) {
+  foundRecipes.forEach(recipe => {
+    let domRecipe = document.getElementById(`${recipe.id}`);
+    domRecipe.style.display = "none";
+  });
+}
 
+function openRecipeInfo(event) {
+  fullRecipeInfo.style.display = "inline";
+  let recipeId = event.path.find(e => e.id).id;
+  let recipe = recipeData.find(recipe => recipe.id === Number(recipeId));
+  generateRecipeTitle(recipe, generateIngredients(recipe));
+  addRecipeImage(recipe);
+  generateInstructions(recipe);
+  fullRecipeInfo.insertAdjacentHTML("beforebegin", "<section id='overlay'></div>");
+}
 
+function generateRecipeTitle(recipe, ingredients) {
+  let recipeTitle = `
+    <button id="exit-recipe-btn">X</button>
+    <h3 id="recipe-title">${recipe.name}</h3>
+    <h4>Ingredients</h4>
+    <p>${ingredients}</p>`
+  fullRecipeInfo.insertAdjacentHTML("beforeend", recipeTitle);
+  //put above shit into an if conditional to prevent more than one resippy from being clicked.
+}
+
+function addRecipeImage(recipe) {
+  document.getElementById("recipe-title").style.backgroundImage = `url(${recipe.image})`;
+}
+
+function exitRecipe() {
+  while (fullRecipeInfo.firstChild &&
+    fullRecipeInfo.removeChild(fullRecipeInfo.firstChild));
+  fullRecipeInfo.style.display = "none";
+  document.getElementById("overlay").remove();
+}
+
+function showMyRecipesBanner() {
+  document.querySelector(".welcome-msg").style.display = "none";
+  document.querySelector(".my-recipes-banner").style.display = "block";
+}
+
+function showWelcomeBanner() {
+  document.querySelector(".welcome-msg").style.display = "flex";
+  document.querySelector(".my-recipes-banner").style.display = "none";
+}
+
+function toggleMenu() {
+  var menuDropdown = document.querySelector(".drop-menu");
+  menuOpen = !menuOpen;
+  if (menuOpen) {
+    menuDropdown.style.display = "block";
+  } else {
+    menuDropdown.style.display = "none";
+  }
+}
+function showAllRecipes() {
+  recipes.forEach(recipe => {
+    let domRecipe = document.getElementById(`${recipe.id}`);
+    domRecipe.style.display = "block";
+  });
+  showWelcomeBanner();
+}
+
+function displayPantryInfo(pantry) {
+  pantry.forEach(ingredient => {
+    let ingredientHtml = `<li><input type="checkbox" class="pantry-checkbox" id="${ingredient.name}">
+      <label for="${ingredient.name}">${ingredient.name}, ${ingredient.count}</label></li>`;
+    document.querySelector(".pantry-list").insertAdjacentHTML("beforeend",
+      ingredientHtml);
+  });
+}
 export default domUpdates;
