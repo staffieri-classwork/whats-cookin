@@ -1,45 +1,6 @@
-console.log("here is the dom updates thingy");
+let domUpdates = {
 
-function getUsers() {
-  const userDataApi = "https:fe-apps.herokuapp.com/api/v1/whats-cookin/1911/users/wcUsersData"
-  const promise = fetch(userDataApi)
-    .then (response => response.json())
-    // .then(users => users.wcUsersData.find((user) => user.id === userID))
-  return promise;
-}
-
-function getRecipes() {
-  const recipeDataApi = "https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/recipes/recipeData"
-  const promise = fetch(recipeDataApi)
-    .then(response => response.json())
-    // .then((recipe) => pickles = recipe.recipeData)
-    // .then(() => console.log(createRecipeObject(pickles)))
-  return promise;
-}
-
-function getIngredients() {
-  const ingredientDataApi = "https://fe-apps.herokuapp.com/api/v1/whats-cookin/1911/ingredients/ingredientsData"
-  const promise = fetch(ingredientDataApi)
-    .then(response => response.json())
-    // .then((ingredient) => ingredient.ingredientsData
-  return promise;
-}
-
-function onLoadContent() {
-  let promise1 = Pantry.getIngredients()
-  let promise2 = Recipe.getRecipes()
-  let promise3 = User.getUsers(userId)
-  Promise.all([promise1, promise2, promise3])
-    .then(values => {
-      // .then((ingredient) => ingredient.ingredientsData
-      // .then((recipe) => pickles = recipe.recipeData)
-      // .then(users => users.wcUsersData.find((user) => user.id === userID))
-
-      //DOM shenanigans
-    })
-}
-
-function addToDom(recipeInfo, shortRecipeName) {
+ addToDom(recipeInfo, shortRecipeName, main) {
   let cardHtml = `
     <div class="recipe-card" id=${recipeInfo.id}>
       <h3 maxlength="40">${shortRecipeName}</h3>
@@ -53,33 +14,33 @@ function addToDom(recipeInfo, shortRecipeName) {
       <img src="../images/apple-logo-outline.png" alt="unfilled apple icon" class="card-apple-icon">
     </div>`
   main.insertAdjacentHTML("beforeend", cardHtml);
-}
+},
 
-function listTags(allTags) {
+ listTags(allTags) {
   allTags.forEach(tag => {
     let tagHtml = `<li><input type="checkbox" class="checked-tag" id="${tag}">
       <label for="${tag}">${capitalize(tag)}</label></li>`;
     tagList.insertAdjacentHTML("beforeend", tagHtml);
   });
-}
+},
 
-function findCheckedBoxes() {
+ findCheckedBoxes() {
   let tagCheckboxes = document.querySelectorAll(".checked-tag");
   let checkboxInfo = Array.from(tagCheckboxes)
   let selectedTags = checkboxInfo.filter(box => {
     return box.checked;
   })
   findTaggedRecipes(selectedTags);
-}
+},
 
-function hideUnselectedRecipes(foundRecipes) {
+ hideUnselectedRecipes(foundRecipes) {
   foundRecipes.forEach(recipe => {
     let domRecipe = document.getElementById(`${recipe.id}`);
     domRecipe.style.display = "none";
   });
-}
+},
 
-function openRecipeInfo(event) {
+ openRecipeInfo(event) {
   fullRecipeInfo.style.display = "inline";
   let recipeId = event.path.find(e => e.id).id;
   let recipe = recipeData.find(recipe => recipe.id === Number(recipeId));
@@ -87,9 +48,9 @@ function openRecipeInfo(event) {
   addRecipeImage(recipe);
   generateInstructions(recipe);
   fullRecipeInfo.insertAdjacentHTML("beforebegin", "<section id='overlay'></div>");
-}
+},
 
-function generateRecipeTitle(recipe, ingredients) {
+ generateRecipeTitle(recipe, ingredients) {
   let recipeTitle = `
     <button id="exit-recipe-btn">X</button>
     <h3 id="recipe-title">${recipe.name}</h3>
@@ -97,30 +58,30 @@ function generateRecipeTitle(recipe, ingredients) {
     <p>${ingredients}</p>`
   fullRecipeInfo.insertAdjacentHTML("beforeend", recipeTitle);
   //put above shit into an if conditional to prevent more than one resippy from being clicked.
-}
+},
 
-function addRecipeImage(recipe) {
+ addRecipeImage(recipe) {
   document.getElementById("recipe-title").style.backgroundImage = `url(${recipe.image})`;
-}
+},
 
-function exitRecipe() {
+ exitRecipe() {
   while (fullRecipeInfo.firstChild &&
     fullRecipeInfo.removeChild(fullRecipeInfo.firstChild));
   fullRecipeInfo.style.display = "none";
   document.getElementById("overlay").remove();
-}
+},
 
-function showMyRecipesBanner() {
+ showMyRecipesBanner() {
   document.querySelector(".welcome-msg").style.display = "none";
   document.querySelector(".my-recipes-banner").style.display = "block";
-}
+},
 
-function showWelcomeBanner() {
+ showWelcomeBanner() {
   document.querySelector(".welcome-msg").style.display = "flex";
   document.querySelector(".my-recipes-banner").style.display = "none";
-}
+},
 
-function toggleMenu() {
+ toggleMenu() {
   var menuDropdown = document.querySelector(".drop-menu");
   menuOpen = !menuOpen;
   if (menuOpen) {
@@ -128,21 +89,25 @@ function toggleMenu() {
   } else {
     menuDropdown.style.display = "none";
   }
-}
-function showAllRecipes() {
+},
+
+ showAllRecipes() {
   recipes.forEach(recipe => {
     let domRecipe = document.getElementById(`${recipe.id}`);
     domRecipe.style.display = "block";
   });
   showWelcomeBanner();
-}
+},
 
-function displayPantryInfo(pantry) {
+displayPantryInfo(pantry) {
   pantry.forEach(ingredient => {
     let ingredientHtml = `<li><input type="checkbox" class="pantry-checkbox" id="${ingredient.name}">
       <label for="${ingredient.name}">${ingredient.name}, ${ingredient.count}</label></li>`;
     document.querySelector(".pantry-list").insertAdjacentHTML("beforeend",
       ingredientHtml);
   });
+},
+
 }
+
 export default domUpdates;

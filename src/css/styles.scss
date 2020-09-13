@@ -124,12 +124,12 @@ span {
 }
 
 #search-input:hover {
-  box-shadow: inset $zero $white;
+  box-shadow: inset 0 $white;
   transition: .8s ease;
 }
 
 #search-input:focus {
-  box-shadow: inset $zero $white;
+  box-shadow: inset 0 $white;
 }
 
 #search-input::placeholder {
