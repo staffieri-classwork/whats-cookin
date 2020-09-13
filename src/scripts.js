@@ -32,9 +32,6 @@ let tagList = document.querySelector(".tag-list");
 let user;
 
 window.addEventListener("load", onLoadContent);
-// window.addEventListener("load", createCards);
-// window.addEventListener("load", findTags);
-// window.addEventListener("load", generateUser);
 allRecipesBtn.addEventListener("click", showAllRecipes);
 filterBtn.addEventListener("click", findCheckedBoxes);
 main.addEventListener("click", addToMyRecipes);
@@ -83,7 +80,7 @@ function createRecipeObject(recipes) { //Still needed? Input? where does this li
   return newRecipeObjects
 }
 
-// CREATE RECIPE CARDS 
+// CREATE RECIPE CARDS
 function createCards() {
   recipeData.forEach(recipe => {
     let recipeInfo = new Recipe(recipe);
