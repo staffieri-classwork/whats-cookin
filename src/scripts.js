@@ -66,7 +66,7 @@ let user;
 
 
 window.addEventListener("load", createCards);
-window.addEventListener("load", findTags);
+window.addEventListener("load", findAllTags);
 window.addEventListener("load", generateUser);
 allRecipesBtn.addEventListener("click", showAllRecipes);
 filterBtn.addEventListener("click", findCheckedBoxes);
@@ -107,6 +107,12 @@ function createRecipeObject(recipes) { //Still needed? Input? where does this li
   return newRecipeObjects
 }
 
+function capitalize(words) { //stay for Scripts
+  return words.split(" ").map(word => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }).join(" ");
+}
+
 // CREATE RECIPE CARDS
 function createCards() {
   recipeData.forEach(recipe => {
@@ -128,75 +134,46 @@ function checkNameLength(recipeData, recipeName) {
 }
 
 // FILTER BY RECIPE TAGS
-// function findTags() { //recipe.findByTag() Same same
-//   let tags = [];
-//   recipeData.forEach(recipe => {
-//     recipe.tags.forEach(tag => {
-//       if (!tags.includes(tag)) {
-//         tags.push(tag);
-//       }
-//     });
-//   });
-//   tags.sort();
-//   listTags(tags);//wat do?
-// }
+function findAllTags() {
+  let tags = [];
+  recipeData.forEach(recipe => {
+    recipe.tags.forEach(tag => {
+      if (!tags.includes(tag)) {
+        tags.push(tag);
+      }
+    });
+  });
+  tags.sort();
+  listTags(tags);
+} //this function actually gets all the tags from every recipe and displays em to the DOM! do need
 
-// function listTags(allTags) { //moved to domUpdates.js
-//   allTags.forEach(tag => {
-//     let tagHtml = `<li><input type="checkbox" class="checked-tag" id="${tag}">
-//       <label for="${tag}">${capitalize(tag)}</label></li>`;
-//     tagList.insertAdjacentHTML("beforeend", tagHtml);
-//   });
-// }
-
-function capitalize(words) { //stay for Scripts
-  return words.split(" ").map(word => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  }).join(" ");
+function findTaggedRecipes(selected) { //ive changed my mind, we might need this.
+  let filteredResults = [];
+  selected.forEach(tag => {
+    let allRecipes = recipes.filter(recipe => {
+      return recipe.tags.includes(tag.id);
+    });
+    allRecipes.forEach(recipe => {
+      if (!filteredResults.includes(recipe)) {
+        filteredResults.push(recipe);
+      }
+    })
+  });
+  showAllRecipes();
+  if (filteredResults.length > 0) {
+    filterRecipes(filteredResults);
+  }
 }
 
-// function findCheckedBoxes() { // moved to domUpdates.js
-//   let tagCheckboxes = document.querySelectorAll(".checked-tag");
-//   let checkboxInfo = Array.from(tagCheckboxes)
-//   let selectedTags = checkboxInfo.filter(box => {
-//     return box.checked;
-//   })
-//   findTaggedRecipes(selectedTags);//
-// }
-
-// function findTaggedRecipes(selected) { // possibly combine with findByTag and add to recipe class
-//   let filteredResults = [];
-//   selected.forEach(tag => {
-//     let allRecipes = recipes.filter(recipe => {
-//       return recipe.tags.includes(tag.id);
-//     });
-//     allRecipes.forEach(recipe => {
-//       if (!filteredResults.includes(recipe)) {
-//         filteredResults.push(recipe);
-//       }
-//     })
-//   });
-//   showAllRecipes();
-//   if (filteredResults.length > 0) {
-//     filterRecipes(filteredResults);
-//   }
-// }
-
-// function filterRecipes(filtered) { //findByIngredient in recipe class?
-//   let foundRecipes = recipes.filter(recipe => {
-//     return !filtered.includes(recipe);
-//   });
-//   hideUnselectedRecipes(foundRecipes)
-// }
-
-// function hideUnselectedRecipes(foundRecipes) { //moved to domUpdates.js
-//   foundRecipes.forEach(recipe => {
-//     let domRecipe = document.getElementById(`${recipe.id}`);
-//     domRecipe.style.display = "none";
-//   });
-// }
+function filterRecipes(filtered) { //findByIngredient in recipe class?
+  let foundRecipes = recipes.filter(recipe => {
+    return !filtered.includes(recipe);
+  });
+  hideUnselectedRecipes(foundRecipes)
+}
 
 // FAVORITE RECIPE FUNCTIONALITY
+
 // function addToMyRecipes() { // this is User Class behavior //split DOM
 //   if (event.target.className === "card-apple-icon") {
 //     let cardId = parseInt(event.target.closest(".recipe-card").id)
