@@ -115,6 +115,17 @@ function showMyRecipesBanner() {
   document.querySelector(".my-recipes-banner").style.display = "block";
 }
 
+function showSavedRecipes() { //future move to domUpdates.js
+  let unsavedRecipes = recipes.filter(recipe => {
+    return !user.favoriteRecipes.includes(recipe.id);
+  });// ^
+  unsavedRecipes.forEach(recipe => { // DOM --- move to domUpdates?
+    let domRecipe = document.getElementById(`${recipe.id}`);
+    domRecipe.style.display = "none";
+  });
+  showMyRecipesBanner();
+}
+
 function showWelcomeBanner() {
   document.querySelector(".welcome-msg").style.display = "flex";
   document.querySelector(".my-recipes-banner").style.display = "none";
