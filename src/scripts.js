@@ -161,7 +161,7 @@ function createCards() {
 //   });
 // }
 
-function capitalize(words) { //maybe move to class Recipe?
+function capitalize(words) { //stay for Scripts
   return words.split(" ").map(word => {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }).join(" ");
@@ -209,14 +209,14 @@ function capitalize(words) { //maybe move to class Recipe?
 // }
 
 // FAVORITE RECIPE FUNCTIONALITY
-// function addToMyRecipes() { // this is User Class behavior
+// function addToMyRecipes() { // this is User Class behavior //split DOM
 //   if (event.target.className === "card-apple-icon") {
 //     let cardId = parseInt(event.target.closest(".recipe-card").id)
 //     if (!user.favoriteRecipes.includes(cardId)) {
-//       event.target.src = "../images/apple-logo.png";
+//       event.target.src = "../images/apple-logo.png";//invoke DOM function
 //       user.saveRecipe(cardId);
 //     } else {
-//       event.target.src = "../images/apple-logo-outline.png";
+//       event.target.src = "../images/apple-logo-outline.png"; //invoke DOM function
 //       user.removeRecipe(cardId);
 //     }
 //   } else if (event.target.id === "exit-recipe-btn") {
@@ -237,7 +237,7 @@ function capitalize(words) { //maybe move to class Recipe?
 //   return false;
 // }
 
-// function showSavedRecipes() { //Here User behavior
+// function showSavedRecipes() { //future move to domUpdates.js
 //   let unsavedRecipes = recipes.filter(recipe => {
 //     return !user.favoriteRecipes.includes(recipe.id);
 //   });// ^
@@ -245,7 +245,7 @@ function capitalize(words) { //maybe move to class Recipe?
   //   let domRecipe = document.getElementById(`${recipe.id}`);
   //   domRecipe.style.display = "none";
   // });
-  // showMyRecipesBanner();// wat do?
+  // showMyRecipesBanner();
 }
 
 // CREATE RECIPE INSTRUCTIONS
@@ -272,7 +272,7 @@ function capitalize(words) { //maybe move to class Recipe?
 // function addRecipeImage(recipe) { See above
 //   document.getElementById("recipe-title").style.backgroundImage = `url(${recipe.image})`;
 // }
-
+//maybe displayNameOnCards rename?
 // function generateIngredients(recipe) { // maybe same as calculateIngredientsCost in pantry?
 //   return recipe && recipe.ingredients.map(i => {
 //     return `${capitalize(i.name)} (${i.quantity.amount} ${i.quantity.unit})`
@@ -283,7 +283,7 @@ function capitalize(words) { //maybe move to class Recipe?
 //   let instructionsList = "";
 //   let instructions = recipe.instructions.map(i => {
 //     return i.instruction
-//   }); Here down all DOM?
+//   }); Here down all DOM? -------
 //   instructions.forEach(i => {
 //     instructionsList += `<li>${i}</li>`
 //   });
@@ -309,7 +309,7 @@ function capitalize(words) { //maybe move to class Recipe?
 //   document.querySelector(".my-recipes-banner").style.display = "none";
 // }
 
-// SEARCH RECIPES // most of these belong to classes. User/Recipe
+// SEARCH RECIPES // most of these belong to classes. User split searching and DOM display
 // function pressEnterSearch(event) {
 //   event.preventDefault();
 //   searchRecipes();
@@ -350,7 +350,7 @@ function capitalize(words) { //maybe move to class Recipe?
 // }
 
 // CREATE AND USE PANTRY
-// function findPantryInfo() { Maybe belongs to classsssssss?
+// function findPantryInfo() { belongs to class user/pantry!
 //   user.pantry.forEach(item => {
 //     let itemInfo = ingredientsData.find(ingredient => {
 //       return ingredient.id === item.ingredient;
@@ -366,8 +366,8 @@ function capitalize(words) { //maybe move to class Recipe?
 //       pantryInfo.push({name: itemInfo.name, count: item.amount});
 //     }
 //   });
-  // displayPantryInfo(pantryInfo.sort((a, b) => a.name.localeCompare(b.name))); DOM
-}
+  // displayPantryInfo(pantryInfo.sort((a, b) => a.name.localeCompare(b.name)));
+// }
 
 // function displayPantryInfo(pantry) { //Move to domUpdates.js
 //   pantry.forEach(ingredient => {
@@ -378,19 +378,19 @@ function capitalize(words) { //maybe move to class Recipe?
 //   });
 // }
 
-// function findCheckedPantryBoxes() { // This is a mess and no idea at this point.
+// function findCheckedPantryBoxes() { //A CSS thing
 //   let pantryCheckboxes = document.querySelectorAll(".pantry-checkbox");
 //   let pantryCheckboxInfo = Array.from(pantryCheckboxes)
 //   let selectedIngredients = pantryCheckboxInfo.filter(box => {
 //     return box.checked;
 //   })
-//   showAllRecipes();
+//   showAllRecipes(); //could go either way *shrug*
 //   if (selectedIngredients.length > 0) {
 //     findRecipesWithCheckedIngredients(selectedIngredients);
 //   }
 // }
 
-// function findRecipesWithCheckedIngredients(selected) { // maybe User class.
+// function findRecipesWithCheckedIngredients(selected) { // Scripts 
 //   let recipeChecker = (arr, target) => target.every(v => arr.includes(v));
 //   let ingredientNames = selected.map(item => {
 //     return item.id;
