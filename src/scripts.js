@@ -369,40 +369,40 @@ function capitalize(words) { //maybe move to class Recipe?
   // displayPantryInfo(pantryInfo.sort((a, b) => a.name.localeCompare(b.name))); DOM
 }
 
-function displayPantryInfo(pantry) { //Move to domUpdates.js
-  pantry.forEach(ingredient => {
-    let ingredientHtml = `<li><input type="checkbox" class="pantry-checkbox" id="${ingredient.name}">
-      <label for="${ingredient.name}">${ingredient.name}, ${ingredient.count}</label></li>`;
-    document.querySelector(".pantry-list").insertAdjacentHTML("beforeend",
-      ingredientHtml);
-  });
-}
+// function displayPantryInfo(pantry) { //Move to domUpdates.js
+//   pantry.forEach(ingredient => {
+//     let ingredientHtml = `<li><input type="checkbox" class="pantry-checkbox" id="${ingredient.name}">
+//       <label for="${ingredient.name}">${ingredient.name}, ${ingredient.count}</label></li>`;
+//     document.querySelector(".pantry-list").insertAdjacentHTML("beforeend",
+//       ingredientHtml);
+//   });
+// }
 
-function findCheckedPantryBoxes() {
-  let pantryCheckboxes = document.querySelectorAll(".pantry-checkbox");
-  let pantryCheckboxInfo = Array.from(pantryCheckboxes)
-  let selectedIngredients = pantryCheckboxInfo.filter(box => {
-    return box.checked;
-  })
-  showAllRecipes();
-  if (selectedIngredients.length > 0) {
-    findRecipesWithCheckedIngredients(selectedIngredients);
-  }
-}
+// function findCheckedPantryBoxes() { // This is a mess and no idea at this point.
+//   let pantryCheckboxes = document.querySelectorAll(".pantry-checkbox");
+//   let pantryCheckboxInfo = Array.from(pantryCheckboxes)
+//   let selectedIngredients = pantryCheckboxInfo.filter(box => {
+//     return box.checked;
+//   })
+//   showAllRecipes();
+//   if (selectedIngredients.length > 0) {
+//     findRecipesWithCheckedIngredients(selectedIngredients);
+//   }
+// }
 
-function findRecipesWithCheckedIngredients(selected) {
-  let recipeChecker = (arr, target) => target.every(v => arr.includes(v));
-  let ingredientNames = selected.map(item => {
-    return item.id;
-  })
-  recipes.forEach(recipe => {
-    let allRecipeIngredients = [];
-    recipe.ingredients.forEach(ingredient => {
-      allRecipeIngredients.push(ingredient.name);
-    });
-    if (!recipeChecker(allRecipeIngredients, ingredientNames)) {
-      let domRecipe = document.getElementById(`${recipe.id}`);
-      domRecipe.style.display = "none";
-    }
-  })
-}
+// function findRecipesWithCheckedIngredients(selected) { // maybe User class.
+//   let recipeChecker = (arr, target) => target.every(v => arr.includes(v));
+//   let ingredientNames = selected.map(item => {
+//     return item.id;
+//   })
+//   recipes.forEach(recipe => {
+//     let allRecipeIngredients = [];
+//     recipe.ingredients.forEach(ingredient => {
+//       allRecipeIngredients.push(ingredient.name);
+//     });
+//     if (!recipeChecker(allRecipeIngredients, ingredientNames)) { //DOM
+//       let domRecipe = document.getElementById(`${recipe.id}`);
+//       domRecipe.style.display = "none";
+//     }
+//   })
+// }
