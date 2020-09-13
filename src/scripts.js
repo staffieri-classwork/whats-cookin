@@ -203,65 +203,24 @@ function isDescendant(parent, child) { //eh? important? Yes. related to addToMyR
 }
 
 // CREATE RECIPE INSTRUCTIONS
-// function openRecipeInfo(event) { // moved to domUpdates.js
-//   fullRecipeInfo.style.display = "inline";
-//   let recipeId = event.path.find(e => e.id).id;
-//   let recipe = recipeData.find(recipe => recipe.id === Number(recipeId));
-//   generateRecipeTitle(recipe, generateIngredients(recipe));
-//   addRecipeImage(recipe);
-//   generateInstructions(recipe);
-//   fullRecipeInfo.insertAdjacentHTML("beforebegin", "<section id='overlay'></div>");
-// }
 
-// function generateRecipeTitle(recipe, ingredients) { // move to domUpdates.js
-//   let recipeTitle = `
-//     <button id="exit-recipe-btn">X</button>
-//     <h3 id="recipe-title">${recipe.name}</h3>
-//     <h4>Ingredients</h4>
-//     <p>${ingredients}</p>`
-//   fullRecipeInfo.insertAdjacentHTML("beforeend", recipeTitle);
-//   //put above shit into an if conditional to prevent more than one resippy from being clicked.
-// }
+function generateIngredients(recipe) {
+  return recipe && recipe.ingredients.map(i => {
+    return `${capitalize(i.name)} (${i.quantity.amount} ${i.quantity.unit})`
+  }).join(", ");
+}
 
-// function addRecipeImage(recipe) { See above
-//   document.getElementById("recipe-title").style.backgroundImage = `url(${recipe.image})`;
-// }
-//maybe displayNameOnCards rename?
-// function generateIngredients(recipe) { // maybe same as calculateIngredientsCost in pantry?
-//   return recipe && recipe.ingredients.map(i => {
-//     return `${capitalize(i.name)} (${i.quantity.amount} ${i.quantity.unit})`
-//   }).join(", ");
-// }
-
-// function generateInstructions(recipe) { // recipe class behavior?
-//   let instructionsList = "";
-//   let instructions = recipe.instructions.map(i => {
-//     return i.instruction
-//   }); Here down all DOM? -------
-//   instructions.forEach(i => {
-//     instructionsList += `<li>${i}</li>`
-//   });
-//   fullRecipeInfo.insertAdjacentHTML("beforeend", "<h4>Instructions</h4>");
-//   fullRecipeInfo.insertAdjacentHTML("beforeend", `<ol>${instructionsList}</ol>`);
-// }
-
-// function exitRecipe() { moved to domUpdates.js
-//   while (fullRecipeInfo.firstChild &&
-//     fullRecipeInfo.removeChild(fullRecipeInfo.firstChild));
-//   fullRecipeInfo.style.display = "none";
-//   document.getElementById("overlay").remove();
-// }
-
-// TOGGLE DISPLAYS // All moved to domUpdates.js
-// function showMyRecipesBanner() {
-//   document.querySelector(".welcome-msg").style.display = "none";
-//   document.querySelector(".my-recipes-banner").style.display = "block";
-// }
-//
-// function showWelcomeBanner() {
-//   document.querySelector(".welcome-msg").style.display = "flex";
-//   document.querySelector(".my-recipes-banner").style.display = "none";
-// }
+function generateInstructions(recipe) {
+  let instructionsList = "";
+  let instructions = recipe.instructions.map(i => {
+    return i.instruction
+  }); //Here down all DOM? -------
+  instructions.forEach(i => {
+    instructionsList += `<li>${i}</li>`
+  });
+  fullRecipeInfo.insertAdjacentHTML("beforeend", "<h4>Instructions</h4>");
+  fullRecipeInfo.insertAdjacentHTML("beforeend", `<ol>${instructionsList}</ol>`);
+}
 
 // SEARCH RECIPES // most of these belong to classes. User split searching and DOM display
 // function pressEnterSearch(event) {

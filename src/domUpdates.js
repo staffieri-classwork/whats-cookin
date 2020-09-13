@@ -96,7 +96,6 @@ function generateRecipeTitle(recipe, ingredients) {
     <h4>Ingredients</h4>
     <p>${ingredients}</p>`
   fullRecipeInfo.insertAdjacentHTML("beforeend", recipeTitle);
-  //put above shit into an if conditional to prevent more than one resippy from being clicked.
 }
 
 function addRecipeImage(recipe) {
