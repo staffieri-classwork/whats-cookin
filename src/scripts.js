@@ -83,7 +83,7 @@ function createRecipeObject(recipes) { //Still needed? Input? where does this li
   return newRecipeObjects
 }
 
-// CREATE RECIPE CARDS
+// CREATE RECIPE CARDS 
 function createCards() {
   recipeData.forEach(recipe => {
     let recipeInfo = new Recipe(recipe);
