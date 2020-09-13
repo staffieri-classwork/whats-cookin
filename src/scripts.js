@@ -174,43 +174,32 @@ function filterRecipes(filtered) { //findByIngredient in recipe class?
 
 // FAVORITE RECIPE FUNCTIONALITY
 
-// function addToMyRecipes() { // this is User Class behavior //split DOM
-//   if (event.target.className === "card-apple-icon") {
-//     let cardId = parseInt(event.target.closest(".recipe-card").id)
-//     if (!user.favoriteRecipes.includes(cardId)) {
-//       event.target.src = "../images/apple-logo.png";//invoke DOM function
-//       user.saveRecipe(cardId);
-//     } else {
-//       event.target.src = "../images/apple-logo-outline.png"; //invoke DOM function
-//       user.removeRecipe(cardId);
-//     }
-//   } else if (event.target.id === "exit-recipe-btn") {
-//     exitRecipe();
-//   } else if (isDescendant(event.target.closest(".recipe-card"), event.target)) {
-//     openRecipeInfo(event);
-//   }
-// }
+function addToMyRecipes() { // this is User Class behavior //split DOM
+  if (event.target.className === "card-apple-icon") {
+    let cardId = parseInt(event.target.closest(".recipe-card").id)
+    if (!user.favoriteRecipes.includes(cardId)) {
+      event.target.src = "../images/apple-logo.png";//invoke DOM function
+      user.saveRecipe(cardId);
+    } else {
+      event.target.src = "../images/apple-logo-outline.png"; //invoke DOM function
+      user.removeRecipe(cardId);
+    }
+  } else if (event.target.id === "exit-recipe-btn") {
+    exitRecipe();
+  } else if (isDescendant(event.target.closest(".recipe-card"), event.target)) {
+    openRecipeInfo(event);
+  }
+}
 
-// function isDescendant(parent, child) { //eh? important? Yes. related to addToMyRecipes()
-//   let node = child;
-//   while (node !== null) {
-//     if (node === parent) {
-//       return true;
-//     }
-//     node = node.parentNode;
-//   }
-//   return false;
-// }
-
-// function showSavedRecipes() { //future move to domUpdates.js
-//   let unsavedRecipes = recipes.filter(recipe => {
-//     return !user.favoriteRecipes.includes(recipe.id);
-//   });// ^
-  // unsavedRecipes.forEach(recipe => { // DOM --- move to domUpdates?
-  //   let domRecipe = document.getElementById(`${recipe.id}`);
-  //   domRecipe.style.display = "none";
-  // });
-  // showMyRecipesBanner();
+function isDescendant(parent, child) { //eh? important? Yes. related to addToMyRecipes()
+  let node = child;
+  while (node !== null) {
+    if (node === parent) {
+      return true;
+    }
+    node = node.parentNode;
+  }
+  return false;
 }
 
 // CREATE RECIPE INSTRUCTIONS
