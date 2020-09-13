@@ -9,20 +9,20 @@ import './css/styles.scss';
 import User from './user';
 import Recipe from './recipe';
 
-let allRecipesBtn = document.querySelector(".show-all-btn");
-let filterBtn = document.querySelector(".filter-btn");
-let fullRecipeInfo = document.querySelector(".recipe-instructions");
 let main = document.querySelector("main");
-let menuOpen = false;
-let pantryBtn = document.querySelector(".my-pantry-btn");
-let pantryInfo = [];
-let recipes = [];
-let savedRecipesBtn = document.querySelector(".saved-recipes-btn");
-let searchBtn = document.querySelector(".search-btn");
+let fullRecipeInfo = document.querySelector(".recipe-instructions");
+let tagList = document.querySelector(".tag-list");
 let searchForm = document.querySelector("#search");
 let searchInput = document.querySelector("#search-input");
+let allRecipesBtn = document.querySelector(".show-all-btn");
+let filterBtn = document.querySelector(".filter-btn");
+let pantryBtn = document.querySelector(".my-pantry-btn");
+let savedRecipesBtn = document.querySelector(".saved-recipes-btn");
+let searchBtn = document.querySelector(".search-btn");
 let showPantryRecipes = document.querySelector(".show-pantry-recipes-btn");
-let tagList = document.querySelector(".tag-list");
+let menuOpen = false;
+let pantryInfo = [];
+let recipes = [];
 let user;
 
 
@@ -66,11 +66,11 @@ function createCards() {
     if (recipeInfo.name.length > 40) {
       shortRecipeName = recipeInfo.name.substring(0, 40) + "...";
     }
-    addToDom(recipeInfo, shortRecipeName)
+    displayRecipeCard(recipeInfo, shortRecipeName)
   });
 }
 
-function addToDom(recipeInfo, shortRecipeName) {
+function displayRecipeCard(recipeInfo, shortRecipeName) {
   let cardHtml = `
     <div class="recipe-card" id=${recipeInfo.id}>
       <h3 maxlength="40">${shortRecipeName}</h3>
@@ -160,7 +160,7 @@ function addToMyRecipes() {
   if (event.target.className === "card-apple-icon") {
     let cardId = parseInt(event.target.closest(".recipe-card").id)
     if (!user.favoriteRecipes.includes(cardId)) {
-      event.target.src = "../images/apple-logo.png"; //toggle apples method 
+      event.target.src = "../images/apple-logo.png"; //toggle apples method
       user.saveRecipe(cardId);
     } else {
       event.target.src = "../images/apple-logo-outline.png";
