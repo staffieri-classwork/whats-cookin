@@ -425,11 +425,11 @@ main {
   margin: -4% -3% 2% -1%;
   position: fixed;
   transition: .3s ease;
-}
 
-#exit-recipe-btn:hover {
-  background: $lime-green;
-  transition: .3s ease;
+  &:hover {
+    background: $lime-green;
+    transition: .3s ease;
+  }
 }
 
 #recipe-title {
