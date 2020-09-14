@@ -1,4 +1,4 @@
-let domUpdates = {
+export let domUpdates = {
 
  addToDom(recipeInfo, shortRecipeName, main) {
   let cardHtml = `
@@ -110,4 +110,4 @@ displayPantryInfo(pantry) {
 
 }
 
-export default domUpdates;
+// export default domUpdates;
