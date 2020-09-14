@@ -36,8 +36,6 @@ body {
     "image image"
     "aside main";
   height: 100vh;
-  margin: 0;
-  padding: 0;
   -webkit-font-smoothing: auto;
 }
 
@@ -121,27 +119,27 @@ span {
   text-align: right;
   transition: .8s ease;
   width: 100%;
-}
 
-#search-input:hover {
-  box-shadow: inset 0 $white;
-  transition: .8s ease;
-}
+  &:hover {
+    box-shadow: inset 0 $white;
+    transition: .8s ease;
+  }
 
-#search-input:focus {
-  box-shadow: inset 0 $white;
-}
+  &:focus {
+    box-shadow: inset 0 $white;
+  }
 
-#search-input::placeholder {
-  color: $main-blue;
-  font-size: 20px;
-  text-align: right;
-  text-shadow: none;
-}
+  &::placeholder {
+    color: $main-blue;
+    font-size: 20px;
+    text-align: right;
+    text-shadow: none;
+  }
 
-#search-input:focus::placeholder {
-  font-size: 0px;
-  transition: .8s ease;
+  &:focus::placeholder {
+    font-size: 0px;
+    transition: .8s ease;
+  }
 }
 
 .search-label {
@@ -170,20 +168,21 @@ span {
   text-align: center;
   transition: .4s ease;
   width: 15%;
+
+  &:hover {
+    color: $lime-green;
+    font-size: 14px;
+    text-shadow: 0px 2px 4px black;
+    transition: .4s ease;
+  }
+
+  img {
+    max-height: 40px;
+    max-width: 40px;
+    padding: 2px 0px;
+  }
 }
 
-.nav-btn:hover {
-  color: $lime-green;
-  font-size: 14px;
-  text-shadow: 0px 2px 4px black;
-  transition: .4s ease;
-}
-
-.nav-btn img {
-  max-height: 40px;
-  max-width: 40px;
-  padding: 2px 0px;
-}
 
 .saved-ingredients-btn {
   border-left: 3px solid $lime-green;
@@ -273,24 +272,25 @@ main {
   margin: 20px;
   padding: 15px;
   width: 250px;
+
+  &:hover .card-photo-preview {
+    opacity: 50%;
+    transition: .8s ease;
+  }
+
+  &:hover .text {
+    font-size: 20px;
+    opacity: 100%;
+    transition: .5s ease;
+    width: 100%;
+  }
+
+  &:hover h3 {
+    text-shadow: 0px 0px 4px $lime-green;
+    transition: .8s ease;
+  }
 }
 
-.recipe-card:hover .card-photo-preview {
-  opacity: 50%;
-  transition: .8s ease;
-}
-
-.recipe-card:hover .text {
-  font-size: 20px;
-  opacity: 100%;
-  transition: .5s ease;
-  width: 100%;
-}
-
-.recipe-card:hover h3 {
-  text-shadow: 0px 0px 4px $lime-green;
-  transition: .8s ease;
-}
 
 .card-apple-icon {
   cursor: pointer;
