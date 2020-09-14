@@ -1,4 +1,4 @@
-class Pantry {
+export class Pantry {
   constructor(user, ingredientsData) {
     this.ingredients = user.pantry;
     this.ingredientsData = ingredientsData;
