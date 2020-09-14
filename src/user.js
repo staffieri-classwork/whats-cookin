@@ -1,4 +1,4 @@
-class User {
+export class User {
   constructor(user) {
     // console.log(user)
     this.id = user.id;
