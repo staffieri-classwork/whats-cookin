@@ -10,6 +10,7 @@ $seafoam-h2-hover: hsla(148, 38%, 65%, 1);
 $green: hsla(151, 48%, 40%, 1);
 $lime-green: hsla(78, 77%, 66%, 1);
 $pale-blue: hsla(210, 38%, 86%, 1);
+$transition-slow: .8s ease;
 
 
 //EXTENDS
@@ -58,7 +59,7 @@ h3 {
   cursor: pointer;
   height: 17%;
   margin: 5px 5px 10px 0px;
-  transition: .8s ease;
+  transition: $transition-slow;
 }
 
 h4 {
@@ -116,12 +117,12 @@ span {
   outline: none;
   padding: 0% 2% 0% 0%;
   text-align: right;
-  transition: .8s ease;
+  transition: $transition-slow;
   width: 100%;
 
   &:hover {
     box-shadow: inset 0 $white-in-cards;
-    transition: .8s ease;
+    transition: $transition-slow;
   }
 
   &:focus {
@@ -137,7 +138,7 @@ span {
 
   &:focus::placeholder {
     font-size: 0px;
-    transition: .8s ease;
+    transition: $transition-slow;
   }
 }
 
@@ -274,7 +275,7 @@ main {
 
   &:hover .card-photo-preview {
     opacity: 50%;
-    transition: .8s ease;
+    transition: $transition-slow;
   }
 
   &:hover .text {
@@ -286,7 +287,7 @@ main {
 
   &:hover h3 {
     text-shadow: 0px 0px 4px $lime-green;
-    transition: .8s ease;
+    transition: $transition-slow;
   }
 }
 
@@ -306,7 +307,7 @@ main {
   border-radius: 7px;
   cursor: pointer;
   height: 130px;
-  transition: .8s ease;
+  transition: $transition-slow;
   width: 100%;
 }
 
