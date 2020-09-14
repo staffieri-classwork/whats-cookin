@@ -1,4 +1,4 @@
-class Recipe {
+export class Recipe {
   constructor(recipe) {
     this.name = recipe.name;
     this.id = recipe.id;
