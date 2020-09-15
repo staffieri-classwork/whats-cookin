@@ -31,15 +31,6 @@ capitalize(words) {
   });
 },
 
- findCheckedBoxes() {
-  let tagCheckboxes = document.querySelectorAll(".checked-tag");
-  let checkboxInfo = Array.from(tagCheckboxes)
-  let selectedTags = checkboxInfo.filter(box => {
-    return box.checked;
-  })
-  findTaggedRecipes(selectedTags);
-},
-
  hideUnselectedRecipes(foundRecipes) {
   foundRecipes.forEach(recipe => {
     let domRecipe = document.getElementById(`${recipe.id}`);
