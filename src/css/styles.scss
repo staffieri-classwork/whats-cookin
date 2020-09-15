@@ -10,7 +10,7 @@ $main-blue: hsla(209, 24%, 47%, 1);
 $green: hsla(151, 48%, 40%, 1);
 $dark-green-hover: hsla(110, 85%, 15%, 1);
 $lime-green: hsla(78, 77%, 66%, 1);
-$warm-orange-h4: hsla(22, 95%, 35%, 1);
+$deep-pink-h4: hsla(342, 95%, 25%, 1);
 $pale-blue: hsla(210, 38%, 86%, 1);
 $transition-slow: .8s ease;
 
@@ -66,7 +66,7 @@ h3 {
 
 h4 {
   color: $white-in-cards;
-  background-color: $warm-orange-h4;
+  background-color: $deep-pink-h4;
   border-radius: 3px;
   margin: 10px 0px 0px 0px;
   padding: 1px 4px 1px 4px;
@@ -405,7 +405,7 @@ main {
 
   h4 {
     background: $white-in-cards;
-    color: $warm-orange-h4;
+    color: $deep-pink-h4;
   }
 
   p {
