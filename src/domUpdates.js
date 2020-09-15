@@ -23,6 +23,7 @@ capitalize(words) {
 },
 
  listTags(allTags) {
+  let tagList = document.querySelector(".tag-list");
   allTags.forEach(tag => {
     let tagHtml = `<li><input type="checkbox" class="checked-tag" id="${tag}">
       <label for="${tag}">${this.capitalize(tag)}</label></li>`;
