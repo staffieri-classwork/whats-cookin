@@ -21,10 +21,16 @@
         <label for="search-input" class="search-label">
           Search
         <input id="search-input" type="text" autocomplete="off" placeholder="Search Recipes..." role="searchbox"></input></label>
-        <button class="nav-btn search-btn" type="button" name="button"><img src="../images/search.png" alt="search button"></button>
+        <button
+        aria-controls="search-input"
+         class="nav-btn search-btn" type="button" name="button"><img src="../images/search.png" alt="search button"></button>
       </form>
-      <button tabindex="2" class="nav-btn ing-pan-btn saved-recipes-btn" type="button" name="button" role="button"><img src="../images/cookbook.png" alt="search button">My Recipes</button>
-      <button tabindex="3" class="nav-btn my-pantry-btn ing-pan-btn saved-ingredients-btn" type="button" name="button" role="button"><img src="../images/seasoning.png" alt="search button">My Pantry</button>
+      <button
+       aria-controls="saved-recipes-btn"
+       tabindex="2" class="nav-btn ing-pan-btn saved-recipes-btn" type="button" name="button" role="button"><img src="../images/cookbook.png" alt="search button">My Recipes</button>
+      <button
+       aria-controls="saved-ingredients-btn"
+       tabindex="3" class="nav-btn my-pantry-btn ing-pan-btn saved-ingredients-btn" type="button" name="button" role="button"><img src="../images/seasoning.png" alt="search button">My Pantry</button>
     </header>
     <section class="banner-image">
       <div class="my-recipes-banner">
@@ -40,13 +46,15 @@
     <aside>
       <div class="wrap">
         <h2>Recipe Type</h2>
-        <ul class="tag-list">
+        <ul class="tag-list" role="checkbox">
         </ul>
         <button class="filter-btn">Filter Recipes</button>
       </div>
     </aside>
     <main>
-      <div class="recipe-instructions">
+      <div
+      aria-controls="recipe-instructions"
+      class="recipe-instructions" roll="scrollbar">
       </div>
       <div class="my-recipes-banner">
         <h1>My Recipes</h1>
