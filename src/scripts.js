@@ -314,24 +314,24 @@ function showSavedRecipes() {
 // }
 
 // CREATE AND USE PANTRY
-// function findPantryInfo() { belongs to class user/pantry!
-//   user.pantry.forEach(item => {
-//     let itemInfo = ingredientsData.find(ingredient => {
-//       return ingredient.id === item.ingredient;
-//     });
-//     let originalIngredient = pantryInfo.find(ingredient => {
-//       if (itemInfo) {
-//         return ingredient.name === itemInfo.name;
-//       }
-//     });
-//     if (itemInfo && originalIngredient) {
-//       originalIngredient.count += item.amount;
-//     } else if (itemInfo) {
-//       pantryInfo.push({name: itemInfo.name, count: item.amount});
-//     }
-//   });
-  // displayPantryInfo(pantryInfo.sort((a, b) => a.name.localeCompare(b.name)));
-// }
+function findPantryInfo() {
+  user.pantry.forEach(item => {
+    let itemInfo = ingredientsData.find(ingredient => {
+      return ingredient.id === item.ingredient;
+    });
+    let originalIngredient = pantryInfo.find(ingredient => {
+      if (itemInfo) {
+        return ingredient.name === itemInfo.name;
+      }
+    });
+    if (itemInfo && originalIngredient) {
+      originalIngredient.count += item.amount;
+    } else if (itemInfo) {
+      pantryInfo.push({name: itemInfo.name, count: item.amount});
+    }
+  });
+  displayPantryInfo(pantryInfo.sort((a, b) => a.name.localeCompare(b.name)));
+}
 
 // function displayPantryInfo(pantry) { //Move to domUpdates.js
 //   pantry.forEach(ingredient => {
