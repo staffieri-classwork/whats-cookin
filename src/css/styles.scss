@@ -9,6 +9,7 @@ $main-blue: hsla(209, 24%, 47%, 1);
 $seafoam-h2-hover: hsla(148, 38%, 65%, 1);
 $green: hsla(151, 48%, 40%, 1);
 $lime-green: hsla(78, 77%, 66%, 1);
+$warm-h4-orange: hsla(27, 85%, 55%, 1);
 $pale-blue: hsla(210, 38%, 86%, 1);
 $transition-slow: .8s ease;
 
@@ -50,7 +51,7 @@ h1 {
 }
 
 h2 {
-  color: $seafoam-h2-hover;
+  color: $green;
   margin: 10px 0px 10px 0px;
 }
 
@@ -63,8 +64,8 @@ h3 {
 }
 
 h4 {
-  color: $green;
-  background-color: $lime-green;
+  color: $white-in-cards;
+  background-color: $warm-h4-orange;
   border-radius: 3px;
   margin: 10px 0px 0px 0px;
   padding: 1px 4px 1px 4px;
