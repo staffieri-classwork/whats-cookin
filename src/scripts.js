@@ -1,11 +1,13 @@
 import $ from 'jquery';
+// import './images/apple-logo-outline.png'
+
 // import users from './data/users-data';
-// import recipeData from  './data/recipe-data';
+// import recipeData from './data/recipe-data';
 // import ingredientData from './data/ingredient-data';
 import User from './user';
 import Recipe from './recipe';
-import './css/base.scss';
 import './css/styles.scss';
+
 import domUpdates from './domUpdates'
 import api from './api'
 
@@ -120,16 +122,8 @@ function findTags() { //recipe.findByTag() Same same
     });
   });
   tags.sort();
-  listTags(tags);//wat do?
+  domUpdates.listTags(tags);//wat do?
 }
-
-// function listTags(allTags) { //moved to domUpdates.js
-//   allTags.forEach(tag => {
-//     let tagHtml = `<li><input type="checkbox" class="checked-tag" id="${tag}">
-//       <label for="${tag}">${capitalize(tag)}</label></li>`;
-//     tagList.insertAdjacentHTML("beforeend", tagHtml);
-//   });
-// }
 
 function capitalize(words) { //stay for Scripts
   return words.split(" ").map(word => {
