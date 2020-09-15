@@ -8,7 +8,7 @@ $black-shadow-shadow: hsla(360, 5%, 0%, 1);
 $main-blue: hsla(209, 24%, 47%, 1);
 // $seafoam-h2-hover: hsla(148, 38%, 65%, 1);
 $green: hsla(151, 48%, 40%, 1);
-$dark-green-hover: hsla(110, 85%, 15%, 1);
+$dark-green: hsla(110, 85%, 15%, 1);
 $lime-green: hsla(78, 77%, 66%, 1);
 $deep-pink-h4: hsla(342, 95%, 25%, 1);
 $pale-blue: hsla(210, 38%, 86%, 1);
@@ -17,7 +17,7 @@ $transition-slow: .8s ease;
 
 //EXTENDS
 %button-shared {
-  background-color: $green;
+  background-color: $dark-green;
   border: 0;
   border-radius: 3px;
   color: $white-in-cards;
@@ -354,7 +354,7 @@ main {
 }
 
 .filter-btn:hover {
-  background-color: $dark-green-hover;
+  background-color: $main-blue;
 }
 
 
