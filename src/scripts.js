@@ -1,4 +1,6 @@
 import $ from 'jquery';
+// import './images/apple-logo-outline.png'
+
 // import users from './data/users-data';
 // import recipeData from  './data/recipe-data';
 // import ingredientData from './data/ingredient-data';
@@ -6,6 +8,7 @@ import User from './user';
 import Recipe from './recipe';
 import './css/base.scss';
 import './css/styles.scss';
+
 import domUpdates from './domUpdates'
 import api from './api'
 
