@@ -130,32 +130,32 @@ function capitalize(words) { //stay for Scripts
   }).join(" ");
 }
 
-// function findCheckedBoxes() { // moved to domUpdates.js
-//   let tagCheckboxes = document.querySelectorAll(".checked-tag");
-//   let checkboxInfo = Array.from(tagCheckboxes)
-//   let selectedTags = checkboxInfo.filter(box => {
-//     return box.checked;
-//   })
-//   findTaggedRecipes(selectedTags);//
-// }
+function findCheckedBoxes() {
+  let tagCheckboxes = document.querySelectorAll(".checked-tag");
+  let checkboxInfo = Array.from(tagCheckboxes)
+  let selectedTags = checkboxInfo.filter(box => {
+    return box.checked;
+  })
+  findTaggedRecipes(selectedTags);
+}
 
-// function findTaggedRecipes(selected) { // possibly combine with findByTag and add to recipe class
-//   let filteredResults = [];
-//   selected.forEach(tag => {
-//     let allRecipes = recipes.filter(recipe => {
-//       return recipe.tags.includes(tag.id);
-//     });
-//     allRecipes.forEach(recipe => {
-//       if (!filteredResults.includes(recipe)) {
-//         filteredResults.push(recipe);
-//       }
-//     })
-//   });
-//   showAllRecipes();
-//   if (filteredResults.length > 0) {
-//     filterRecipes(filteredResults);
-//   }
-// }
+function findTaggedRecipes(selected) { // possibly combine with findByTag and add to recipe class
+  let filteredResults = [];
+  selected.forEach(tag => {
+    let allRecipes = recipes.filter(recipe => {
+      return recipe.tags.includes(tag.id);
+    });
+    allRecipes.forEach(recipe => {
+      if (!filteredResults.includes(recipe)) {
+        filteredResults.push(recipe);
+      }
+    })
+  });
+  showAllRecipes();
+  if (filteredResults.length > 0) {
+    filterRecipes(filteredResults);
+  }
+}
 
 // function filterRecipes(filtered) { //findByIngredient in recipe class?
 //   let foundRecipes = recipes.filter(recipe => {
@@ -279,13 +279,13 @@ function showSavedRecipes() {
 //   searchRecipes();
 // }
 //
-// function searchRecipes() {
-//   showAllRecipes();
-//   let searchedRecipes = recipeData.filter(recipe => {
-//     return recipe.name.toLowerCase().includes(searchInput.value.toLowerCase());
-//   });
-//   filterNonSearched(createRecipeObject(searchedRecipes));
-// }
+function searchRecipes() {
+  showAllRecipes();
+  let searchedRecipes = recipeData.filter(recipe => {
+    return recipe.name.toLowerCase().includes(searchInput.value.toLowerCase());
+  });
+  filterNonSearched(createRecipeObject(searchedRecipes));
+}
 //
 // function filterNonSearched(filtered) {
 //   let found = recipes.filter(recipe => {
@@ -295,23 +295,23 @@ function showSavedRecipes() {
 //   hideUnselectedRecipes(found);
 // } //most of these belong to classes
 
-// function toggleMenu() { Move to where the DOM lives.
-//   var menuDropdown = document.querySelector(".drop-menu");
-//   menuOpen = !menuOpen;
-//   if (menuOpen) {
-//     menuDropdown.style.display = "block";
-//   } else {
-//     menuDropdown.style.display = "none";
-//   }
-// }
-//
-// function showAllRecipes() {
-//   recipes.forEach(recipe => {
-//     let domRecipe = document.getElementById(`${recipe.id}`);
-//     domRecipe.style.display = "block";
-//   });
-//   showWelcomeBanner();
-// }
+function toggleMenu() { Move to where the DOM lives.
+  var menuDropdown = document.querySelector(".drop-menu");
+  menuOpen = !menuOpen;
+  if (menuOpen) {
+    menuDropdown.style.display = "block";
+  } else {
+    menuDropdown.style.display = "none";
+  }
+}
+
+function showAllRecipes() {
+  recipes.forEach(recipe => {
+    let domRecipe = document.getElementById(`${recipe.id}`);
+    domRecipe.style.display = "block";
+  });
+  showWelcomeBanner();
+}
 
 // CREATE AND USE PANTRY
 function findPantryInfo() {
@@ -342,17 +342,17 @@ function findPantryInfo() {
 //   });
 // }
 
-// function findCheckedPantryBoxes() { //A CSS thing
-//   let pantryCheckboxes = document.querySelectorAll(".pantry-checkbox");
-//   let pantryCheckboxInfo = Array.from(pantryCheckboxes)
-//   let selectedIngredients = pantryCheckboxInfo.filter(box => {
-//     return box.checked;
-//   })
-//   showAllRecipes(); //could go either way *shrug*
-//   if (selectedIngredients.length > 0) {
-//     findRecipesWithCheckedIngredients(selectedIngredients);
-//   }
-// }
+function findCheckedPantryBoxes() { //A CSS thing
+  let pantryCheckboxes = document.querySelectorAll(".pantry-checkbox");
+  let pantryCheckboxInfo = Array.from(pantryCheckboxes)
+  let selectedIngredients = pantryCheckboxInfo.filter(box => {
+    return box.checked;
+  })
+  showAllRecipes(); //could go either way *shrug*
+  if (selectedIngredients.length > 0) {
+    findRecipesWithCheckedIngredients(selectedIngredients);
+  }
+}
 
 // function findRecipesWithCheckedIngredients(selected) { // Scripts
 //   let recipeChecker = (arr, target) => target.every(v => arr.includes(v));
