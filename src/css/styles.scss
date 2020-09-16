@@ -152,6 +152,50 @@ span {
   padding: 1%;
 }
 
+
+.x-hover {
+  overflow: auto;
+  position: absolute;
+  z-index: 2;
+  display: flex; //
+  background-color: $main-blue;
+  border-width: .5rem;
+  border-color: $white-in-cards;
+  border-radius: 100%;
+  margin: 80%;
+  margin-top: 3%;
+  outline: none;
+  overflow: hidden; //
+  transition: .4s ease; //
+  width: auto;
+}
+
+.x-no-hover {
+  overflow: auto;
+  position: absolute;
+  z-index: 3;
+  display: flex; //
+  background-color: $main-blue;
+  border-width: .5rem;
+  border-color: $white-in-cards;
+  border-radius: 100%;
+  margin: 80%;
+  margin-top: 3%;
+  outline: none;
+  overflow: hidden; //
+  transition: .4s ease; //
+  width: auto;
+  &:hover {
+  z-index: 1;
+
+  }
+}
+
+.x-icon{
+  height: 5rem;
+  padding: 1rem;
+}
+
 .nav-btn-unhidden {
   overflow: auto;
   position: absolute;
@@ -184,10 +228,16 @@ span {
 .list{
   margin-top: 50%;
 }
+
 .unhidden-icon{
  height: 12rem;
  padding: 1rem;
 }
+
+.clicked-unhidden {
+  @extend .hidden;
+}
+
 .nav-btn {
   align-items: center;
   background: $main-blue no-repeat;
