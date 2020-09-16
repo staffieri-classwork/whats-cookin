@@ -268,14 +268,14 @@ function searchRecipes() {
   });
   filterNonSearched(createRecipeObject(searchedRecipes));
 }
-//
-// function filterNonSearched(filtered) {
-//   let found = recipes.filter(recipe => {
-//     let ids = filtered.map(f => f.id);
-//     return !ids.includes(recipe.id)
-//   })
-//   hideUnselectedRecipes(found);
-// } //most of these belong to classes
+
+function filterNonSearched(filtered) {
+  let found = recipes.filter(recipe => {
+    let ids = filtered.map(f => f.id);
+    return !ids.includes(recipe.id)
+  })
+  domUpdates.hideUnselectedRecipes(found);
+}
 
 function toggleMenu() {
   var menuDropdown = document.querySelector(".drop-menu");

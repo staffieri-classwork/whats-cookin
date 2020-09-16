@@ -2,7 +2,7 @@ let domUpdates = {
 
  addToDom(recipeInfo, shortRecipeName, main) {
   let cardHtml = `
-    <div class="recipe-card" id=${recipeInfo.id}>
+    <article class="recipe-card" id=${recipeInfo.id}>
       <h3 maxlength="40">${shortRecipeName}</h3>
       <div class="card-photo-container">
         <img src=${recipeInfo.image} class="card-photo-preview" alt="${recipeInfo.name} recipe" title="${recipeInfo.name} recipe">
@@ -12,7 +12,7 @@ let domUpdates = {
       </div>
       <h4>${recipeInfo.tags[0]}</h4>
       <img src="../images/apple-logo-outline.png" alt="unfilled apple icon" class="card-apple-icon">
-    </div>`
+    </article>`
   main.insertAdjacentHTML("beforeend", cardHtml);
 },
 
@@ -25,7 +25,7 @@ capitalize(words) {
  listTags(allTags) {
   let tagList = document.querySelector(".tag-list");
   allTags.forEach(tag => {
-    let tagHtml = `<li><input type="checkbox" class="checked-tag" id="${tag}">
+    let tagHtml = `<li><input type="checkbox" class="checked-tag" id="${tag}ID">
       <label for="${tag}">${this.capitalize(tag)}</label></li>`;
     tagList.insertAdjacentHTML("beforeend", tagHtml);
   });
