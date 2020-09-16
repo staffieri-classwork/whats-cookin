@@ -39,6 +39,7 @@ capitalize(words) {
 },
 
  openRecipeInfo(event) {
+  let fullRecipeInfo = document.querySelector(".recipe-instructions");
   fullRecipeInfo.style.display = "inline";
   let recipeId = event.path.find(e => e.id).id;
   let recipe = recipeData.find(recipe => recipe.id === Number(recipeId));
@@ -49,6 +50,7 @@ capitalize(words) {
 },
 
  generateRecipeTitle(recipe, ingredients) {
+  let fullRecipeInfo = document.querySelector(".recipe-instructions");
   let recipeTitle = `
     <button id="exit-recipe-btn">X</button>
     <h3 id="recipe-title">${recipe.name}</h3>
@@ -63,6 +65,7 @@ capitalize(words) {
 },
 
  exitRecipe() {
+  let fullRecipeInfo = document.querySelector(".recipe-instructions");
   while (fullRecipeInfo.firstChild &&
     fullRecipeInfo.removeChild(fullRecipeInfo.firstChild));
   fullRecipeInfo.style.display = "none";
