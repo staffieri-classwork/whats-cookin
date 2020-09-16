@@ -157,19 +157,12 @@ function findTaggedRecipes(selected) { // possibly combine with findByTag and ad
   }
 }
 
-// function filterRecipes(filtered) { //findByIngredient in recipe class?
-//   let foundRecipes = recipes.filter(recipe => {
-//     return !filtered.includes(recipe);
-//   });
-//   hideUnselectedRecipes(foundRecipes)
-// }
-
-// function hideUnselectedRecipes(foundRecipes) { //moved to domUpdates.js
-//   foundRecipes.forEach(recipe => {
-//     let domRecipe = document.getElementById(`${recipe.id}`);
-//     domRecipe.style.display = "none";
-//   });
-// }
+function filterRecipes(filtered) {
+  let foundRecipes = recipes.filter(recipe => {
+    return !filtered.includes(recipe);
+  });
+  domUpdates.hideUnselectedRecipes(foundRecipes)
+}
 
 // FAVORITE RECIPE FUNCTIONALITY
 
@@ -186,7 +179,7 @@ function addToMyRecipes() {
   } else if (event.target.id === "exit-recipe-btn") {
     exitRecipe();
   } else if (isDescendant(event.target.closest(".recipe-card"), event.target)) {
-    openRecipeInfo(event);
+    domUpdates.openRecipeInfo(event);
   }
 }
 
@@ -274,11 +267,11 @@ function showSavedRecipes() {
 // }
 
 // SEARCH RECIPES // most of these belong to classes. User split searching and DOM display
-// function pressEnterSearch(event) {
-//   event.preventDefault();
-//   searchRecipes();
-// }
-//
+function pressEnterSearch(event) {
+  event.preventDefault();
+  searchRecipes();
+}
+
 function searchRecipes() {
   showAllRecipes();
   let searchedRecipes = recipeData.filter(recipe => {
@@ -295,7 +288,7 @@ function searchRecipes() {
 //   hideUnselectedRecipes(found);
 // } //most of these belong to classes
 
-function toggleMenu() { Move to where the DOM lives.
+function toggleMenu() {
   var menuDropdown = document.querySelector(".drop-menu");
   menuOpen = !menuOpen;
   if (menuOpen) {
@@ -310,7 +303,7 @@ function showAllRecipes() {
     let domRecipe = document.getElementById(`${recipe.id}`);
     domRecipe.style.display = "block";
   });
-  showWelcomeBanner();
+  domUpdates.showWelcomeBanner();
 }
 
 // CREATE AND USE PANTRY
