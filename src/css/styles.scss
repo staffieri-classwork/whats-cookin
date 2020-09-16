@@ -3,7 +3,7 @@ $main-font: "Quicksand", sans-serif;
 $title-font: "Sulphur Point", sans-serif;
 
 //COLOURS
-$white-in-cards: hsla(357, 15%, 95%, 1);
+$white-in-cards: hsla(23, 15%, 95%, 1);
 $black-shadow-shadow: hsla(360, 5%, 0%, 1);
 $main-blue: hsla(209, 24%, 47%, 1);
 $seafoam-h2-hover: hsla(148, 38%, 65%, 1);
@@ -152,6 +152,42 @@ span {
   padding: 1%;
 }
 
+.nav-btn-unhidden {
+  overflow: auto;
+  position: absolute;
+  z-index: 2;
+  align-items: center; //
+  background: $main-blue no-repeat; //
+  border-width: .5rem;
+  border-color: $white-in-cards;
+  display: flex; //
+  flex-direction: column; //
+  font-size: 0px;
+  font-weight: 700;
+  justify-content: center;
+  margin: 10%;
+  margin-top: 15%;
+  outline: none;
+  overflow: hidden; //
+  text-align: center; //
+  transition: .4s ease; //
+  width: 70%;
+  border-radius: 4rem;
+
+  &:hover {
+    color: $lime-green;
+    font-size: 2rem;
+    text-shadow: 0px 2px 4px black;
+    transition: .4s ease;
+  }
+}
+.list{
+  margin-top: 50%;
+}
+.unhidden-icon{
+ height: 12rem;
+ padding: 1rem;
+}
 .nav-btn {
   align-items: center;
   background: $main-blue no-repeat;
@@ -458,7 +494,21 @@ main {
   z-index:100;
 }
 
+.whole-filter-section{
+  background-color: $black-shadow-shadow;
+  opacity: 70%;
+  overflow: auto;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  position: fixed;
+  z-index: 1;
+}
 
+.unhidden {
+  display: none;
+}
 
 @media  (max-width: 70rem) {
   .hidden {
@@ -468,8 +518,11 @@ main {
   .hidden-button {
     @extend .hidden;
   }
-  
+
   main {
     grid-column-start: 1;
+  }
+  .unhidden {
+    display: flex;
   }
 }
