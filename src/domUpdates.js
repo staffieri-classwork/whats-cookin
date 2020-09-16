@@ -23,20 +23,12 @@ capitalize(words) {
 },
 
  listTags(allTags) {
+  let tagList = document.querySelector(".tag-list");
   allTags.forEach(tag => {
     let tagHtml = `<li><input type="checkbox" class="checked-tag" id="${tag}">
       <label for="${tag}">${this.capitalize(tag)}</label></li>`;
     tagList.insertAdjacentHTML("beforeend", tagHtml);
   });
-},
-
- findCheckedBoxes() {
-  let tagCheckboxes = document.querySelectorAll(".checked-tag");
-  let checkboxInfo = Array.from(tagCheckboxes)
-  let selectedTags = checkboxInfo.filter(box => {
-    return box.checked;
-  })
-  findTaggedRecipes(selectedTags);
 },
 
  hideUnselectedRecipes(foundRecipes) {
@@ -47,6 +39,7 @@ capitalize(words) {
 },
 
  openRecipeInfo(event) {
+  let fullRecipeInfo = document.querySelector(".recipe-instructions");
   fullRecipeInfo.style.display = "inline";
   let recipeId = event.path.find(e => e.id).id;
   let recipe = recipeData.find(recipe => recipe.id === Number(recipeId));
@@ -57,6 +50,7 @@ capitalize(words) {
 },
 
  generateRecipeTitle(recipe, ingredients) {
+  let fullRecipeInfo = document.querySelector(".recipe-instructions");
   let recipeTitle = `
     <button id="exit-recipe-btn">X</button>
     <h3 id="recipe-title">${recipe.name}</h3>
@@ -71,6 +65,7 @@ capitalize(words) {
 },
 
  exitRecipe() {
+  let fullRecipeInfo = document.querySelector(".recipe-instructions");
   while (fullRecipeInfo.firstChild &&
     fullRecipeInfo.removeChild(fullRecipeInfo.firstChild));
   fullRecipeInfo.style.display = "none";
