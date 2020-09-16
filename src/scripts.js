@@ -53,8 +53,16 @@ searchForm.addEventListener("submit", pressEnterSearch);
 let userID = Math.floor((Math.random() * 50) + 1);
 
 
+
+//var myGlobalData;
+
+// fetch('google.com')
+//   .then( /* .json() */ )
+//   .then(data => myGlobalData = data)
+//   .then( () => Console.log(myGlobalData))    // 'I EXIST!'
+
+
 function onLoadContent() {
-  console.log("Hello World")
   let promise1 = api.getUsers()
   let promise2 = api.getRecipes()
   let promise3 = api.getIngredients()
@@ -187,7 +195,7 @@ function addToMyRecipes() {
   } else if (event.target.id === "exit-recipe-btn") {
     exitRecipe();
   } else if (isDescendant(event.target.closest(".recipe-card"), event.target)) {
-    domUpdates.openRecipeInfo(event);
+    domUpdates.openRecipeInfo(event, recipeData);
   }
 }
 
@@ -238,30 +246,13 @@ function showSavedRecipes() {
 //   document.getElementById("recipe-title").style.backgroundImage = `url(${recipe.image})`;
 // }
 //maybe displayNameOnCards rename?
-// function generateIngredients(recipe) { // maybe same as calculateIngredientsCost in pantry?
-//   return recipe && recipe.ingredients.map(i => {
-//     return `${capitalize(i.name)} (${i.quantity.amount} ${i.quantity.unit})`
-//   }).join(", ");
-// }
 
-// function generateInstructions(recipe) { // recipe class behavior?
-//   let instructionsList = "";
-//   let instructions = recipe.instructions.map(i => {
-//     return i.instruction
-//   }); Here down all DOM? -------
-//   instructions.forEach(i => {
-//     instructionsList += `<li>${i}</li>`
-//   });
-//   fullRecipeInfo.insertAdjacentHTML("beforeend", "<h4>Instructions</h4>");
-//   fullRecipeInfo.insertAdjacentHTML("beforeend", `<ol>${instructionsList}</ol>`);
-// }
-
-// function exitRecipe() { moved to domUpdates.js
-//   while (fullRecipeInfo.firstChild &&
-//     fullRecipeInfo.removeChild(fullRecipeInfo.firstChild));
-//   fullRecipeInfo.style.display = "none";
-//   document.getElementById("overlay").remove();
-// }
+function exitRecipe() {
+  while (fullRecipeInfo.firstChild &&
+    fullRecipeInfo.removeChild(fullRecipeInfo.firstChild));
+  fullRecipeInfo.style.display = "none";
+  document.getElementById("overlay").remove();
+}
 
 // TOGGLE DISPLAYS // All moved to domUpdates.js
 // function showMyRecipesBanner() {
@@ -317,7 +308,7 @@ function showAllRecipes() {
 // CREATE AND USE PANTRY
 function findPantryInfo() {
   user.pantry.forEach(item => {
-    let itemInfo = ingredientsData.find(ingredient => {
+    let itemInfo = ingredientData.find(ingredient => {
       return ingredient.id === item.ingredient;
     });
     let originalIngredient = pantryInfo.find(ingredient => {
@@ -331,7 +322,7 @@ function findPantryInfo() {
       pantryInfo.push({name: itemInfo.name, count: item.amount});
     }
   });
-  displayPantryInfo(pantryInfo.sort((a, b) => a.name.localeCompare(b.name)));
+  domUpdates.displayPantryInfo(pantryInfo.sort((a, b) => a.name.localeCompare(b.name)));
 }
 
 // function displayPantryInfo(pantry) { //Move to domUpdates.js
