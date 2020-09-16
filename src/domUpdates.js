@@ -38,12 +38,12 @@ capitalize(words) {
   });
 },
 
- openRecipeInfo(event, data) {
+ openRecipeInfo(event, data, ingredientData) {
   let fullRecipeInfo = document.querySelector(".recipe-instructions");
   fullRecipeInfo.style.display = "inline";
   let recipeId = event.path.find(e => e.id).id;
   let recipe = data.find(recipe => recipe.id === Number(recipeId));
-  this.generateRecipeTitle(recipe, this.generateIngredients(recipe));
+  this.generateRecipeTitle(recipe, this.generateIngredients(recipe, ingredientData));
   this.addRecipeImage(recipe);
   this.generateInstructions(recipe);
   fullRecipeInfo.insertAdjacentHTML("beforebegin", "<section id='overlay'></div>");
@@ -72,9 +72,12 @@ generateInstructions(recipe) {
   fullRecipeInfo.insertAdjacentHTML("beforeend", recipeTitle);
 },
 
-generateIngredients(recipe) {
+generateIngredients(recipe, ingredientData) {
   return recipe && recipe.ingredients.map(i => {
-    return `${i.name} (${i.quantity.amount} ${i.quantity.unit})`
+    let ingredientNeeded = ingredientData.find((ingredient) => {
+      return i.id === ingredient.id
+    })
+    return `${ingredientNeeded.name} (${i.quantity.amount} ${i.quantity.unit})`
   }).join(", ");
 },
 

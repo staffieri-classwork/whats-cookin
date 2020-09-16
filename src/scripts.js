@@ -52,16 +52,6 @@ searchForm.addEventListener("submit", pressEnterSearch);
 
 let userID = Math.floor((Math.random() * 50) + 1);
 
-
-
-//var myGlobalData;
-
-// fetch('google.com')
-//   .then( /* .json() */ )
-//   .then(data => myGlobalData = data)
-//   .then( () => Console.log(myGlobalData))    // 'I EXIST!'
-
-
 function onLoadContent() {
   let promise1 = api.getUsers()
   let promise2 = api.getRecipes()
@@ -195,7 +185,7 @@ function addToMyRecipes() {
   } else if (event.target.id === "exit-recipe-btn") {
     exitRecipe();
   } else if (isDescendant(event.target.closest(".recipe-card"), event.target)) {
-    domUpdates.openRecipeInfo(event, recipeData);
+    domUpdates.openRecipeInfo(event, recipeData, ingredientData);
   }
 }
 
@@ -234,7 +224,7 @@ function showSavedRecipes() {
 
 // function generateRecipeTitle(recipe, ingredients) { // move to domUpdates.js
 //   let recipeTitle = `
-//     <button id="exit-recipe-btn">X</button>
+//     <button id="exit-recipe-btn">recipeX</button>
 //     <h3 id="recipe-title">${recipe.name}</h3>
 //     <h4>Ingredients</h4>
 //     <p>${ingredients}</p>`
