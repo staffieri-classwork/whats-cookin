@@ -6,16 +6,17 @@ $title-font: "Sulphur Point", sans-serif;
 $white-in-cards: hsla(23, 15%, 95%, 1);
 $black-shadow-shadow: hsla(360, 5%, 0%, 1);
 $main-blue: hsla(209, 24%, 47%, 1);
-$seafoam-h2-hover: hsla(148, 38%, 65%, 1);
 $green: hsla(151, 48%, 40%, 1);
+$dark-green: hsla(110, 85%, 15%, 1);
 $lime-green: hsla(78, 77%, 66%, 1);
+$deep-pink-h4: hsla(342, 95%, 25%, 1);
 $pale-blue: hsla(210, 38%, 86%, 1);
 $transition-slow: .8s ease;
 
 
 //EXTENDS
 %button-shared {
-  background-color: $green;
+  background-color: $dark-green;
   border: 0;
   border-radius: 3px;
   color: $white-in-cards;
@@ -50,7 +51,7 @@ h1 {
 }
 
 h2 {
-  color: $seafoam-h2-hover;
+  color: $green;
   margin: 10px 0px 10px 0px;
 }
 
@@ -63,8 +64,8 @@ h3 {
 }
 
 h4 {
-  color: $green;
-  background-color: $lime-green;
+  color: $white-in-cards;
+  background-color: $deep-pink-h4;
   border-radius: 3px;
   margin: 10px 0px 0px 0px;
   padding: 1px 4px 1px 4px;
@@ -104,8 +105,10 @@ span {
   width: 100%;
 }
 
+
 #search-input {
   background-color: #b6dcca;
+
   background: -webkit-gradient( linear,left top, left bottom, color-stop(0, rgb(255, 255, 255)), color-stop(1, rgb(225,225,225)));
   border-radius: 10px 0px 0px 10px;
   border: none;
@@ -127,7 +130,7 @@ span {
 
   &:focus {
     box-shadow: inset 0 $white-in-cards;
-  }
+    }
 
   &::placeholder {
     color: $main-blue;
@@ -437,7 +440,7 @@ main {
 }
 
 .filter-btn:hover {
-  background-color: $seafoam-h2-hover;
+  background-color: $main-blue;
 }
 
 
@@ -488,7 +491,7 @@ main {
 
   h4 {
     background: $white-in-cards;
-    color: $green;
+    color: $deep-pink-h4;
   }
 
   p {
