@@ -156,22 +156,7 @@ span {
 }
 
 
-.x-hover {
-  overflow: auto;
-  position: absolute;
-  z-index: 2;
-  display: flex; //
-  background-color: $main-blue;
-  border-width: .5rem;
-  border-color: $white-in-cards;
-  border-radius: 100%;
-  margin: 78%;
-  margin-top: 3%;
-  outline: none;
-  overflow: hidden; //
-  transition: .4s ease; //
-  width: auto;
-}
+
 
 .x-no-hover {
   overflow: auto;
@@ -188,9 +173,9 @@ span {
   overflow: hidden; //
   transition: .4s ease; //
   width: auto;
-  &:hover {
-  z-index: 1;
 
+  &:hover {
+    background-color: darken($main-blue, 25%);
   }
 }
 
@@ -228,7 +213,7 @@ span {
     transition: .4s ease;
   }
 }
-.list{
+.list-menue{
   margin-top: 50%;
 }
 
@@ -605,7 +590,7 @@ main {
       font-size: 1rem;
     }
   }
-  .list{
+  .list-menue{
     margin-top: 80%;
   }
 

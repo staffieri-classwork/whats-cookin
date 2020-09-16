@@ -16,21 +16,27 @@ let newRecipeObjects;
 let users;
 let recipeData;
 let ingredientData;
+let menuOpen = false;
+let pantryInfo = [];
+let recipes = [];
+let user;
 
 let allRecipesBtn = document.querySelector(".show-all-btn");
 let filterBtn = document.querySelector(".filter-btn");
 let fullRecipeInfo = document.querySelector(".recipe-instructions");
 let main = document.querySelector("main");
-let menuOpen = false;
 let pantryBtn = document.querySelector(".my-pantry-btn");
-let pantryInfo = [];
-let recipes = [];
 let savedRecipesBtn = document.querySelector(".saved-recipes-btn");
 let searchBtn = document.querySelector(".search-btn");
 let searchForm = document.querySelector("#search");
 let searchInput = document.querySelector("#search-input");
 let showPantryRecipes = document.querySelector(".show-pantry-recipes-btn");
-let user;
+let hamburgerMenue = document.querySelector(".burger");
+let greenForkSpoonX = document.querySelector(".x-no-hover");
+let listMenue = document.querySelector(".list-menue");
+let hatMenue = document.querySelector(".hat-menue");
+let greyFiltered = document.querySelector(".whole-filter-section");
+
 
 window.addEventListener("load", onLoadContent);
 allRecipesBtn.addEventListener("click", showAllRecipes);
@@ -40,6 +46,8 @@ pantryBtn.addEventListener("click", toggleMenu);
 savedRecipesBtn.addEventListener("click", showSavedRecipes);
 searchBtn.addEventListener("click", searchRecipes);
 showPantryRecipes.addEventListener("click", findCheckedPantryBoxes);
+greenForkSpoonX.addEventListener("click", hamburgerMenueClose);
+hamburgerMenue.addEventListener("click", hamburgerMenueOpen);
 searchForm.addEventListener("submit", pressEnterSearch);
 
 let userID = Math.floor((Math.random() * 50) + 1);
@@ -363,3 +371,19 @@ function findCheckedPantryBoxes() { //A CSS thing
 //     }
 //   })
 // }
+
+// Mobile View //
+
+function hamburgerMenueOpen() {
+  greenForkSpoonX.classList.remove("clicked-unhidden");
+  listMenue.classList.remove("clicked-unhidden");
+  hatMenue.classList.remove("clicked-unhidden");
+  greyFiltered.classList.remove("clicked-unhidden");
+}
+
+function hamburgerMenueClose() {
+  greenForkSpoonX.classList.add("clicked-unhidden");
+  listMenue.classList.add("clicked-unhidden");
+  hatMenue.classList.add("clicked-unhidden");
+  greyFiltered.classList.add("clicked-unhidden");
+}
