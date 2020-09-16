@@ -16,8 +16,8 @@
 [Travis Rollins](https://github.com/kalikoze)
 
 ## Project Links
-[Repo](https://github.com/Estaffieri/whats-cookin)<br>
-[Spec](https://frontend.turing.io/projects/module-2/refactor-tractor-wc.html)
+[Project Repo](https://github.com/Estaffieri/whats-cookin)<br>
+[Project Spec](https://frontend.turing.io/projects/module-2/refactor-tractor-wc.html)
 
 ## Set-up
 
