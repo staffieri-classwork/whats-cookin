@@ -65,6 +65,6 @@ Understanding that we should be seperating out all our DOM functionality, API's 
   <img width="460" height="300" src="https://i.imgur.com/Te4DXc7.gif" alt="Desktop view of FreshPicks site">
 </p><br>
 
-## Thank you to Nathan, Matthew, Ashley, John Adams, Travis, Bob, Nathaniel, Jeff, Ian, Katy, Nathaniel D. Foster and to all of Turing.
+## Thank you to Nathan, Blake, Matthew, Ashley, John Adams, Travis, Bob, Nathaniel, Jeff, Ian, Katy, Nathaniel D. Foster and to all of Turing.
 
 ### And special thanks to Gilbert, Ascot, Bea, and Sofie (aka Sofritas/Ms. Sulky), the furry creatures in our lives that kept us sane during this project.
