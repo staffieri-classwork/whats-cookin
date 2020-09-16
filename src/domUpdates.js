@@ -38,15 +38,28 @@ capitalize(words) {
   });
 },
 
- openRecipeInfo(event) {
+ openRecipeInfo(event, data, ingredientData) {
   let fullRecipeInfo = document.querySelector(".recipe-instructions");
   fullRecipeInfo.style.display = "inline";
   let recipeId = event.path.find(e => e.id).id;
-  let recipe = recipeData.find(recipe => recipe.id === Number(recipeId));
-  generateRecipeTitle(recipe, generateIngredients(recipe));
-  addRecipeImage(recipe);
-  generateInstructions(recipe);
+  let recipe = data.find(recipe => recipe.id === Number(recipeId));
+  this.generateRecipeTitle(recipe, this.generateIngredients(recipe, ingredientData));
+  this.addRecipeImage(recipe);
+  this.generateInstructions(recipe);
   fullRecipeInfo.insertAdjacentHTML("beforebegin", "<section id='overlay'></div>");
+},
+
+generateInstructions(recipe) {
+  let fullRecipeInfo = document.querySelector(".recipe-instructions");
+  let instructionsList = "";
+  let instructions = recipe.instructions.map(i => {
+    return i.instruction
+  });
+  instructions.forEach(i => {
+    instructionsList += `<li>${i}</li>`
+  });
+  fullRecipeInfo.insertAdjacentHTML("beforeend", "<h4>Instructions</h4>");
+  fullRecipeInfo.insertAdjacentHTML("beforeend", `<ol>${instructionsList}</ol>`);
 },
 
  generateRecipeTitle(recipe, ingredients) {
@@ -57,7 +70,15 @@ capitalize(words) {
     <h4>Ingredients</h4>
     <p>${ingredients}</p>`
   fullRecipeInfo.insertAdjacentHTML("beforeend", recipeTitle);
-  //put above shit into an if conditional to prevent more than one resippy from being clicked.
+},
+
+generateIngredients(recipe, ingredientData) {
+  return recipe && recipe.ingredients.map(i => {
+    let ingredientNeeded = ingredientData.find((ingredient) => {
+      return i.id === ingredient.id
+    })
+    return `${ingredientNeeded.name} (${i.quantity.amount} ${i.quantity.unit})`
+  }).join(", ");
 },
 
  addRecipeImage(recipe) {
@@ -97,17 +118,17 @@ capitalize(words) {
     let domRecipe = document.getElementById(`${recipe.id}`);
     domRecipe.style.display = "block";
   });
-  showWelcomeBanner();
+  this.showWelcomeBanner();
 },
 
-displayPantryInfo(pantry) {
-  pantry.forEach(ingredient => {
-    let ingredientHtml = `<li><input type="checkbox" class="pantry-checkbox" id="${ingredient.name}">
-      <label for="${ingredient.name}">${ingredient.name}, ${ingredient.count}</label></li>`;
-    document.querySelector(".pantry-list").insertAdjacentHTML("beforeend",
-      ingredientHtml);
-  });
-},
+  displayPantryInfo(pantry) {
+    pantry.forEach(ingredient => {
+      let ingredientHtml = `<li><input type="checkbox" class="pantry-checkbox" id="${ingredient.name}">
+        <label for="${ingredient.name}">${ingredient.name}, ${ingredient.count}</label></li>`;
+      document.querySelector(".pantry-list").insertAdjacentHTML("beforeend",
+        ingredientHtml);
+    });
+  },
 
 }
 

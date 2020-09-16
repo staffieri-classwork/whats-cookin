@@ -1,5 +1,4 @@
 let api = {
-
   getUsers() {
     const userDataApi = "https:fe-apps.herokuapp.com/api/v1/whats-cookin/1911/users/wcUsersData"
     const promise = fetch(userDataApi)
