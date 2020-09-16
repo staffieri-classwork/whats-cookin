@@ -66,3 +66,5 @@ Understanding that we should be seperating out all our DOM functionality, API's 
 </p><br>
 
 ## Thank you to Nathan, Matthew, Ashley, John Adams, Travis, Bob, Nathaniel, Jeff, Ian, Katy, Nathaniel D. Foster and to all of Turing.
+
+### And special thanks to Gilbert, Ascot, Bea, and Sofie (aka Sofritas/Ms. Sulky), the furry creatures in our lives that kept us sane during this project.
