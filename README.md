@@ -7,7 +7,7 @@ Project abstract
 [Estelle Staffieri](https://github.com/Estaffieri)
 [Mike Walker](https://github.com/MichaelEWalker87)
 
-## Instrctors
+## Instructors
 [Robert Gu](https://github.com/BobGu)
 [Travis Rollins](https://github.com/kalikoze)
 
