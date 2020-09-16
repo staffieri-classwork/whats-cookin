@@ -3,16 +3,20 @@
 Project abstract
 
 ## Developers
+[Brigette Doelp](https://github.com/BrigetteDoelp)
 [Estelle Staffieri](https://github.com/Estaffieri)
+[Mike Walker](https://github.com/MichaelEWalker87)
 
 ## Instrctors
-[Hannah Hudson](https://github.com/hannahhch)
+[Robert Gu](https://github.com/BobGu)
+[Travis Rollins](https://github.com/kalikoze)
 
 ## Project Links
-[Repo](https://github.com/Estaffieri/tic-tac-toe)
+[Repo](https://github.com/Estaffieri/whats-cookin)
+[Spec](https://frontend.turing.io/projects/module-2/refactor-tractor-wc.html)
 
 ## Set-up
-//code block for how to see the thing
+
 
 ## Goals and Objectives
 - Build on top of pre-existing code that you did not write and navigate someone else’s codebase
