@@ -20,7 +20,12 @@
 [Project Spec](https://frontend.turing.io/projects/module-2/refactor-tractor-wc.html)
 
 ## Set-up
-
+//check for veracity
+  ```
+      Fork Repo
+      run "npm run" in your terminal
+      run "npm start" in your terminal
+ ```
 
 ## Goals and Objectives
 - Build on top of pre-existing code that you did not write and navigate someone else’s codebase
@@ -36,8 +41,10 @@
 ## Wins & Challenges
 //What was great what was not?
 
+## Under the Hood
 
-## Functionality Showcase:
+
+## Functionality Showcase
 
 <p align="center"></br>
   <img width="460" height="300" src="" alt="">
